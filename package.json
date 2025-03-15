@@ -1,0 +1,36 @@
+{
+  "name": "4am-consulting",
+  "version": "1.0.0",
+  "description": "4 AM Consulting - Software Solutions for Small Businesses",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve",
+    "build": "webpack",
+    "deploy": "gh-pages -d dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "consulting",
+    "tech",
+    "software",
+    "solutions",
+    "business"
+  ],
+  "author": "4 AM Consulting Team",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^7.1.2",
+    "gh-pages": "^6.3.0",
+    "html-webpack-plugin": "^5.6.3",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0"
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "bootstrap": "^5.3.3",
+    "gsap": "^3.12.5",
+    "three": "^0.162.0"
+  }
+}
