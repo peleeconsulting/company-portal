@@ -108,14 +108,14 @@ const initFooter = () => {
             <li>
               <i class="fas fa-map-marker-alt"></i>
               <div>
-                123 Tech Avenue, Suite 400<br>
-                Toronto, ON M5V 2K4
+                50 Mont Joy Crescent<br>
+                Brampton, ON L6S 3E7
               </div>
             </li>
             <li>
               <i class="fas fa-phone-alt"></i>
               <div>
-                <a href="tel:+15551234567">(555) 123-4567</a>
+                <a href="tel:+2068329589">(206) 832-9589</a>
               </div>
             </li>
             <li>
