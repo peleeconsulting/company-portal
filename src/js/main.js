@@ -19,7 +19,7 @@ const initHeader = () => {
   header.innerHTML = `
     <div class="container">
       <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="index.html">4 AM <span class="text-primary">Consulting</span></a>
+        <a class="navbar-brand" href="index.html">Peelee <span class="text-primary">Consulting</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -73,7 +73,7 @@ const initFooter = () => {
     <div class="container">
       <div class="row">
         <div class="col-lg-4 footer-widget">
-          <a href="index.html" class="footer-logo">4 AM <span class="text-primary">Consulting</span></a>
+          <a href="index.html" class="footer-logo">Peelee <span class="text-primary">Consulting</span></a>
           <p class="footer-text">Innovative software solutions tailored for small businesses. Expert tech consulting at affordable prices.</p>
           <div class="footer-social">
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -128,7 +128,7 @@ const initFooter = () => {
         </div>
       </div>
       <div class="footer-bottom text-center">
-        <p class="copyright">© ${new Date().getFullYear()} 4 AM Consulting. All rights reserved.</p>
+        <p class="copyright">© ${new Date().getFullYear()} Peelee Consulting. All rights reserved.</p>
       </div>
     </div>
     <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>

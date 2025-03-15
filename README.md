@@ -1,6 +1,8 @@
-# 4 AM Consulting Website
+# Peelee Consulting Website
 
-A modern, responsive website for 4 AM Consulting, a software solutions company specializing in small business technology consulting.
+A modern, responsive website for Peelee Consulting, a software solutions company specializing in small business technology consulting.
+
+The website will be available: <a href="https://peleeconsulting.github.io/company-portal/">GitHub Pages</a>
 
 ## Features
 
@@ -95,7 +97,7 @@ npm run deploy
 
 ## Credits
 
-- Created for 4 AM Consulting
+- Created for Peelee Consulting
 - Developed by Mohaimen Khan and team
 
 ## License
