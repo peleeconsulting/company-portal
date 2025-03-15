@@ -128,7 +128,7 @@ const initFooter = () => {
         </div>
       </div>
       <div class="footer-bottom text-center">
-        <p class="copyright">© ${new Date().getFullYear()} 6ixstack Consulting. All rights reserved.</p>
+        <p class="copyright">© ${new Date().getFullYear()} 6ixstack Solutions. All rights reserved.</p>
       </div>
     </div>
     <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>

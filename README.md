@@ -1,6 +1,6 @@
-# 6ixstack Consulting Website
+# 6ixstack Solutions Website
 
-A modern, responsive website for 6ixstack Consulting, a software solutions company specializing in small business technology consulting.
+A modern, responsive website for 6ixstack Solutions, a software solutions company specializing in small business technology consulting.
 
 The website will be available: <a href="https://peleeconsulting.github.io/company-portal/">GitHub Pages</a>
 
@@ -97,7 +97,7 @@ npm run deploy
 
 ## Credits
 
-- Created for 6ixstack Consulting
+- Created for 6ixstack Solutions
 - Developed by Mohaimen Khan and team
 
 ## License
