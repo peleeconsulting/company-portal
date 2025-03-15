@@ -2,7 +2,7 @@
 
 A modern, responsive website for 6ixStack Solutions, a software solutions company specializing in small business technology consulting.
 
-The website will be available: <a href="https://peleeconsulting.github.io/company-portal/">GitHub Pages</a>
+The website will be available: <a href="https://6ixstack.github.io/company-portal/">GitHub Pages</a>
 
 ## Features
 
