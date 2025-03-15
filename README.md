@@ -96,7 +96,7 @@ npm run deploy
 ## Credits
 
 - Created for 4 AM Consulting
-- Developed by Mohaimen Hasan and team
+- Developed by Mohaimen Khan and team
 
 ## License
 
