@@ -1,6 +1,6 @@
-# Peelee Consulting Website
+# 6ixstack Consulting Website
 
-A modern, responsive website for Peelee Consulting, a software solutions company specializing in small business technology consulting.
+A modern, responsive website for 6ixstack Consulting, a software solutions company specializing in small business technology consulting.
 
 The website will be available: <a href="https://peleeconsulting.github.io/company-portal/">GitHub Pages</a>
 
@@ -97,7 +97,7 @@ npm run deploy
 
 ## Credits
 
-- Created for Peelee Consulting
+- Created for 6ixstack Consulting
 - Developed by Mohaimen Khan and team
 
 ## License
