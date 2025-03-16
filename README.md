@@ -3,7 +3,7 @@
 A modern, responsive website for 6ixStack Solutions, a software solutions company specializing in small business technology consulting.
 
 The website will be available: 
-<a href="https://6ixstack.github.io/company-portal/">GitHub Pages</a>
+<a href="https://6ixstack.github.io/company-portal/">GitHub Pages</a> <br/>
 <a href="https://www.6ixstack.com/">6ixStack Website</a>
 
 ## Features
