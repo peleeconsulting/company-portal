@@ -100,7 +100,7 @@ npm run deploy
 ## Credits
 
 - Created for 6ixStack Solutions
-- Developed by Mohaimen Khan and team
+- Developed by 6ixStack Solutions technology team
 
 ## License
 
