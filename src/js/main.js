@@ -98,7 +98,7 @@ const initFooter = () => {
             <li><a href="solutions.html">Mobile & Web Apps</a></li>
             <li><a href="solutions.html">Data Analytics</a></li>
             <li><a href="solutions.html">Cloud Solutions</a></li>
-            <li><a href="solutions.html">Cybersecurity</a></li>
+            // <li><a href="solutions.html">Cybersecurity</a></li>
             <li><a href="solutions.html">IT Strategy</a></li>
           </ul>
         </div>
