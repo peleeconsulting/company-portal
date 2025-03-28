@@ -594,7 +594,8 @@ const initSixStackSection = () => {
     gsap.set(layer, {
       opacity: 0,
       y: 200,
-      scale: 0.9
+      scale: 0.9,
+      rotationX: 45
     });
   });
   
@@ -610,7 +611,7 @@ const initSixStackSection = () => {
     if (servicesSection) {
       const servicesRect = servicesSection.getBoundingClientRect();
       
-      // Start animation when services section is 50% in view (increased from 30%)
+      // Start animation when services section is 50% in view
       servicesSectionTop = window.scrollY + servicesRect.top - (window.innerHeight * 0.5);
       
       // Use the distance between services start and the service cards
@@ -658,19 +659,20 @@ const initSixStackSection = () => {
     // Update each layer based on scroll progress
     stackLayers.forEach((layer, index) => {
       // Use index directly (0 to 5) so top layer comes in first
-      const layerThreshold = index * 0.015; // Further reduced gaps between layers for earlier start
+      const layerThreshold = index * 0.15; // Increased delay between layers
       
-      // Calculate progress for this specific layer - extremely fast transitions
+      // Calculate progress for this specific layer
       const layerProgress = Math.max(0, Math.min(1, (sectionProgress - layerThreshold) / 0.01));
       
       if (layerProgress > 0) {
-        // Bring in the layer proportional to scroll - with faster animation
+        // Bring in the layer with a sequential animation
         gsap.to(layer, {
           opacity: layerProgress,
           y: 200 * (1 - layerProgress),
           scale: 0.9 + (0.1 * layerProgress),
-          duration: 0.1, // Ultra-fast updates for immediate response
-          ease: "power2.out", // Stronger easing for snappier animation
+          rotationX: 45 * (1 - layerProgress),
+          duration: 0.15,
+          ease: "power2.out",
           onComplete: () => {
             if (layerProgress >= 1) {
               layer.classList.add('visible');
@@ -680,13 +682,14 @@ const initSixStackSection = () => {
           }
         });
       } else {
-        // Hide the layer when scrolled up past its threshold - faster
+        // Hide the layer when scrolled up past its threshold
         gsap.to(layer, {
           opacity: 0,
           y: 200,
           scale: 0.9,
-          duration: 0.1, // Faster hiding
-          ease: "power2.in", // Stronger easing
+          rotationX: 45,
+          duration: 0.08,
+          ease: "power2.in",
           onComplete: () => {
             layer.classList.remove('visible');
           }
