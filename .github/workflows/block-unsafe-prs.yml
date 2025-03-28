@@ -3,19 +3,20 @@ name: Block Unsafe PRs to Main
 on:
   pull_request:
     branches:
-      - main
+      - main  # Only run if the PR *targets* the `main` branch
 
 jobs:
   prevent-unsafe-prs:
+    if: github.base_ref == 'main'
     runs-on: ubuntu-latest
     steps:
-      - name: Check PR Source Branch
+      - name: Block PRs not from preprod
         run: |
-          echo "🔍 Checking if PR comes from 'preprod'..."
-          echo "PR head: ${{ github.head_ref }}"
+          echo "🔍 Target branch: ${{ github.base_ref }}"
+          echo "🔍 Source branch: ${{ github.head_ref }}"
           if [[ "${{ github.head_ref }}" != "preprod" ]]; then
-            echo "❌ Pull requests to 'main' are only allowed from 'preprod'!"
+            echo "❌ PRs to 'main' must come from 'preprod'."
             exit 1
           else
-            echo "✅ PR source branch is 'preprod' — proceeding."
+            echo "✅ PR source is 'preprod'. Proceeding."
           fi
