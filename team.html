@@ -6,6 +6,97 @@
   <title>Our Team - 6ixStack Solutions</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <meta name="description" content="Meet the experts behind 6ixStack Solutions. Our diverse team combines technical expertise with business acumen to deliver exceptional solutions.">
+  <style>
+    .team-card {
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 600px;
+      width: 90%;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .close-modal:hover {
+      color: #333;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .modal-title {
+      flex: 1;
+    }
+
+    .modal-body {
+      line-height: 1.6;
+    }
+
+    .modal-social {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .modal-social a {
+      color: #666;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+
+    .modal-social a:hover {
+      color: #333;
+    }
+  </style>
 <script defer src="main.bundle.js"></script></head>
 <body>
   <header id="header"></header>
@@ -37,7 +128,7 @@
         <div class="row g-4">
           <!-- Mohaimen -->
           <div class="col-lg-6" data-aos="fade-up">
-            <div class="team-card">
+            <div class="team-card" onclick="openModal('mohaimen')">
               <div class="team-image">
                 <div class="team-avatar">
                   <span class="avatar-placeholder">MH</span>
@@ -46,19 +137,13 @@
               <div class="team-content">
                 <h2 class="member-name">Mohaimen Hasan</h2>
                 <p class="member-position">Co-Founder & Technical Lead</p>
-                <p class="member-bio">Mohaimen is a passionate tech leader with expertise in full-stack development, cloud architecture, and AI solutions. With experience at leading tech companies, he brings technical excellence and innovative problem-solving to every project. Mohaimen specializes in designing scalable solutions that help small businesses leverage enterprise-grade technology.</p>
-                <div class="member-social">
-                  <a href="https://www.linkedin.com/in/mohaimenkhan" class="social-link"><i class="fab fa-linkedin"></i></a>
-                  <a href="https://github.com/mohaimenhasan" class="social-link"><i class="fab fa-github"></i></a>
-                  <a href="https://x.com/whoismohaimen" class="social-link"><i class="fab fa-twitter"></i></a>
-                </div>
               </div>
             </div>
           </div>
 
           <!-- Sara -->
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="team-card">
+            <div class="team-card" onclick="openModal('sara')">
               <div class="team-image">
                 <div class="team-avatar">
                   <span class="avatar-placeholder">SS</span>
@@ -67,19 +152,13 @@
               <div class="team-content">
                 <h2 class="member-name">Sara Farrukh Saeed</h2>
                 <p class="member-position">Co-Founder & Data Science Lead</p>
-                <p class="member-bio">Sara is an experienced data analytics and machine learning professional with over 5 years of expertise spanning across telecom, fintech, travel, procurement, marketing, and product domains. With a strong foundation in both technology and business, Sara excels at translating complex data into clear, actionable insights that fuel business growth and innovation. She holds a Bachelor's and Master's degree in Electrical Engineering, with a major in Communication Networks, which equipped her with the technical rigor necessary to tackle complex analytical challenges. Sara has a proven track record in leading high-impact analytics projects across various industries, working closely with cross-functional teams to drive data-driven decision-making. Sara's approach combines technical expertise with practical business applications, ensuring that her clients can make confident, data-backed decisions to accelerate growth and achieve strategic goals.</p>
-                <div class="member-social">
-                  <a href="https://www.linkedin.com/in/sara-farrukh-saeed" class="social-link"><i class="fab fa-linkedin"></i></a>
-                  <a href="https://github.com/Sara-Farrukh-Saeed" class="social-link"><i class="fab fa-github"></i></a>
-                  <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                </div>
               </div>
             </div>
           </div>
 
           <!-- Mahjabeen -->
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="150">
-            <div class="team-card">
+            <div class="team-card" onclick="openModal('mahjabeen')">
               <div class="team-image">
                 <div class="team-avatar">
                   <span class="avatar-placeholder">MA</span>
@@ -88,19 +167,13 @@
               <div class="team-content">
                 <h2 class="member-name">Mahjabeen Alam</h2>
                 <p class="member-position">Co-Founder & Product Lead</p>
-                <p class="member-bio">Mahjabeen specializes in creating intuitive, user-centered designs that elevate digital experiences. With a background in both design and psychology, she bridges the gap between user needs and technical possibilities. Her expertise in UX research, interface design, and user testing ensures that our solutions are not just functional but delightful to use, driving user adoption and satisfaction.</p>
-                <div class="member-social">
-                  <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                  <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
-                  <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
-                </div>
               </div>
             </div>
           </div>
 
           <!-- Rudra -->
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="team-card">
+            <div class="team-card" onclick="openModal('rudra')">
               <div class="team-image">
                 <div class="team-avatar">
                   <span class="avatar-placeholder">RP</span>
@@ -109,18 +182,12 @@
               <div class="team-content">
                 <h2 class="member-name">Rudra Patel</h2>
                 <p class="member-position">Co-Founder & Business Strategy Lead</p>
-                <p class="member-bio">Rudra Patel is passionate about designing solutions that impact large group of people. With more than five years of experience at a leading Canadian telecommunications company, where he led multi-million dollar products, Rudra brings a wealth of knowledge and a results-oriented approach. Holding P.Eng, PMP, and CSPO designations, he excels at producing comprehensive technical solutions, backed by quantifiable metrics, to meet client challenges. Rudra's strong leadership qualities facilitate a deep understanding of the people and businesses he partners with. Furthermore, his experience with the latest cutting-edge technologies positions him to create innovative and leading-edge solutions for every person he has worked for.</p>
-                <div class="member-social">
-                  <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                  <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                  <a href="#" class="social-link"><i class="fab fa-medium"></i></a>
-                </div>
               </div>
             </div>
           </div>
 
           <div class="col-lg-6" data-aos="fade-up">
-            <div class="team-card">
+            <div class="team-card" onclick="openModal('moulik')">
               <div class="team-image">
                 <div class="team-avatar">
                   <span class="avatar-placeholder">MG</span>
@@ -129,18 +196,12 @@
               <div class="team-content">
                 <h2 class="member-name">Moulik Gaglani</h2>
                 <p class="member-position">Co-Founder & Technical Lead</p>
-                <p class="member-bio">Moulik is a passionate tech leader with expertise in full-stack development, cloud architecture, and AI solutions. With experience at leading tech companies, he brings technical excellence and innovative problem-solving to every project.</p>
-                <div class="member-social">
-                  <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                  <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                  <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                </div>
               </div>
             </div>
           </div>
 
           <div class="col-lg-6" data-aos="fade-up">
-            <div class="team-card">
+            <div class="team-card" onclick="openModal('huzaifa')">
               <div class="team-image">
                 <div class="team-avatar">
                   <span class="avatar-placeholder">HG</span>
@@ -149,12 +210,6 @@
               <div class="team-content">
                 <h2 class="member-name">Huzaifa Galely</h2>
                 <p class="member-position">Co-Founder & Technical Lead</p>
-                <p class="member-bio">Huzaifa is a passionate tech leader with expertise in backend solutions. With experience at leading tech companies, he brings technical excellence and innovative problem-solving to every project.</p>
-                <div class="member-social">
-                  <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                  <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                  <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                </div>
               </div>
             </div>
           </div>
@@ -208,6 +263,143 @@
     </section>
   </main>
 
+  <!-- Team Member Modals -->
+  <div id="mohaimen-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('mohaimen')">&times;</span>
+      <div class="modal-header">
+        <div class="modal-avatar">MH</div>
+        <div class="modal-title">
+          <h2>Mohaimen Hasan</h2>
+          <p>Co-Founder & Technical Lead</p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p>Mohaimen is a passionate tech leader with expertise in full-stack development, cloud architecture, and AI solutions. With experience at leading tech companies, he brings technical excellence and innovative problem-solving to every project. Mohaimen specializes in designing scalable solutions that help small businesses leverage enterprise-grade technology.</p>
+      </div>
+      <div class="modal-social">
+        <a href="https://www.linkedin.com/in/mohaimenkhan"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div id="sara-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('sara')">&times;</span>
+      <div class="modal-header">
+        <div class="modal-avatar">SS</div>
+        <div class="modal-title">
+          <h2>Sara Farrukh Saeed</h2>
+          <p>Co-Founder & Data Science Lead</p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p>Sara is an experienced data analytics and machine learning professional with over 5 years of expertise spanning across telecom, fintech, travel, procurement, marketing, and product domains. With a strong foundation in both technology and business, Sara excels at translating complex data into clear, actionable insights that fuel business growth and innovation. She holds a Bachelor's and Master's degree in Electrical Engineering, with a major in Communication Networks, which equipped her with the technical rigor necessary to tackle complex analytical challenges. Sara has a proven track record in leading high-impact analytics projects across various industries, working closely with cross-functional teams to drive data-driven decision-making. Sara's approach combines technical expertise with practical business applications, ensuring that her clients can make confident, data-backed decisions to accelerate growth and achieve strategic goals.</p>
+      </div>
+      <div class="modal-social">
+        <a href="https://www.linkedin.com/in/sara-farrukh-saeed"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div id="mahjabeen-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('mahjabeen')">&times;</span>
+      <div class="modal-header">
+        <div class="modal-avatar">MA</div>
+        <div class="modal-title">
+          <h2>Mahjabeen Alam</h2>
+          <p>Co-Founder & Product Lead</p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p>Mahjabeen specializes in creating intuitive, user-centered designs that elevate digital experiences. With a background in both design and psychology, she bridges the gap between user needs and technical possibilities. Her expertise in UX research, interface design, and user testing ensures that our solutions are not just functional but delightful to use, driving user adoption and satisfaction.</p>
+      </div>
+      <div class="modal-social">
+        <a href="https://www.linkedin.com/in/mahjabeen-alam"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div id="rudra-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('rudra')">&times;</span>
+      <div class="modal-header">
+        <div class="modal-avatar">RP</div>
+        <div class="modal-title">
+          <h2>Rudra Patel</h2>
+          <p>Co-Founder & Business Strategy Lead</p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p>Rudra Patel is passionate about designing solutions that impact large group of people. With more than five years of experience at a leading Canadian telecommunications company, where he led multi-million dollar products, Rudra brings a wealth of knowledge and a results-oriented approach. Holding P.Eng, PMP, and CSPO designations, he excels at producing comprehensive technical solutions, backed by quantifiable metrics, to meet client challenges. Rudra's strong leadership qualities facilitate a deep understanding of the people and businesses he partners with. Furthermore, his experience with the latest cutting-edge technologies positions him to create innovative and leading-edge solutions for every person he has worked for.</p>
+      </div>
+      <div class="modal-social">
+        <a href="https://www.linkedin.com/in/rudrapatelpeng/"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div id="moulik-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('moulik')">&times;</span>
+      <div class="modal-header">
+        <div class="modal-avatar">MG</div>
+        <div class="modal-title">
+          <h2>Moulik Gaglani</h2>
+          <p>Co-Founder & Technical Lead</p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p>Moulik is a passionate tech leader with expertise in full-stack development, cloud architecture, and AI solutions. With experience at leading tech companies, he brings technical excellence and innovative problem-solving to every project.</p>
+      </div>
+      <div class="modal-social">
+        <a href="https://www.linkedin.com/in/moulikgaglani"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div id="huzaifa-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('huzaifa')">&times;</span>
+      <div class="modal-header">
+        <div class="modal-avatar">HG</div>
+        <div class="modal-title">
+          <h2>Huzaifa Galely</h2>
+          <p>Co-Founder & Technical Lead</p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p>Huzaifa is a passionate tech leader with expertise in backend solutions. With experience at leading tech companies, he brings technical excellence and innovative problem-solving to every project.</p>
+      </div>
+      <div class="modal-social">
+        <a href="https://www.linkedin.com/in/hgalely/"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
   <footer id="footer"></footer>
+
+  <script>
+    function openModal(memberId) {
+      const modal = document.getElementById(`${memberId}-modal`);
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(memberId) {
+      const modal = document.getElementById(`${memberId}-modal`);
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    }
+  </script>
 </body>
 </html>
