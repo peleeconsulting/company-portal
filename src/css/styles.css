@@ -1,3 +1,6 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
 :root {
   --primary-color: #D3367A;
   --primary-dark: #B42B6A;
@@ -28,12 +31,28 @@ body {
   color: var(--text-color);
   line-height: 1.6;
   overflow-x: hidden;
+  font-size: 1rem;
+  font-weight: 400;
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   margin-bottom: 1rem;
   color: var(--secondary-color);
+  letter-spacing: -0.02em;
+}
+
+.display-1 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.display-4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .section-title {
@@ -131,9 +150,11 @@ a:hover {
 }
 
 .lead {
+  font-family: 'Inter', sans-serif;
   font-size: 1.25rem;
-  font-weight: 400;
+  font-weight: 500;
   margin-bottom: 1.5rem;
+  line-height: 1.7;
 }
 
 .text-primary {
@@ -162,10 +183,12 @@ header.scrolled {
 }
 
 .navbar-brand {
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.8rem;
   font-weight: 800;
   color: var(--white);
   transition: var(--transition);
+  letter-spacing: -0.02em;
 }
 
 header.scrolled .navbar-brand {
@@ -173,11 +196,13 @@ header.scrolled .navbar-brand {
 }
 
 .nav-link {
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   color: var(--white);
   padding: 0.5rem 1rem !important;
   transition: var(--transition);
   position: relative;
+  letter-spacing: -0.01em;
 }
 
 header.scrolled .nav-link {
