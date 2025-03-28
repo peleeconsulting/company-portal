@@ -20,10 +20,12 @@ const initHeader = () => {
   header.innerHTML = `
     <div class="container">
       <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
-          <img src="${logoImage}" alt="6ixStack Solutions Logo" height="55" class="me-2">
-          6ixStack <span class="text-primary">Solutions</span>
-        </a>
+        <div class="navbar-brand d-flex align-items-center">
+          <a href="index.html" class="d-flex align-items-center text-decoration-none">
+            <img src="${logoImage}" alt="6ixStack Solutions Logo" height="55" class="me-2">
+            <span>6ixStack <span class="text-primary">Solutions</span></span>
+          </a>
+        </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
