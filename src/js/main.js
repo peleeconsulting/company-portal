@@ -662,7 +662,7 @@ const initSixStackSection = () => {
       const layerThreshold = index * 0.15; // Increased delay between layers
       
       // Calculate progress for this specific layer
-      const layerProgress = Math.max(0, Math.min(1, (sectionProgress - layerThreshold) / 0.01));
+      const layerProgress = Math.max(0, Math.min(1, (sectionProgress - layerThreshold) / 0.001));
       
       if (layerProgress > 0) {
         // Bring in the layer with a sequential animation
@@ -671,7 +671,7 @@ const initSixStackSection = () => {
           y: 200 * (1 - layerProgress),
           scale: 0.9 + (0.1 * layerProgress),
           rotationX: 45 * (1 - layerProgress),
-          duration: 0.15,
+          duration: 0.05,
           ease: "power2.out",
           onComplete: () => {
             if (layerProgress >= 1) {
@@ -688,7 +688,7 @@ const initSixStackSection = () => {
           y: 200,
           scale: 0.9,
           rotationX: 45,
-          duration: 0.08,
+          duration: 0.02,
           ease: "power2.in",
           onComplete: () => {
             layer.classList.remove('visible');
