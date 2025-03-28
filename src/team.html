@@ -60,6 +60,23 @@
       margin-bottom: 1.5rem;
     }
 
+    .team-avatar {
+      width: 80px;
+      height: 80px;
+      background-color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+      overflow: hidden;
+    }
+
+    .team-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     .modal-avatar {
       width: 80px;
       height: 80px;
@@ -69,8 +86,13 @@
       align-items: center;
       justify-content: center;
       margin-right: 1rem;
-      font-size: 1.5rem;
-      font-weight: bold;
+      overflow: hidden;
+    }
+
+    .modal-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .modal-title {
@@ -131,11 +153,11 @@
             <div class="team-card" onclick="openModal('mohaimen')">
               <div class="team-image">
                 <div class="team-avatar">
-                  <span class="avatar-placeholder">MH</span>
+                  <img src="<%= require('./assets/images/mohaimenpicture.jpg') %>" alt="Mohaimen Khan">
                 </div>
               </div>
               <div class="team-content">
-                <h2 class="member-name">Mohaimen Hasan</h2>
+                <h2 class="member-name">Mohaimen Khan</h2>
                 <p class="member-position">Co-Founder & Technical Lead</p>
               </div>
             </div>
@@ -146,7 +168,7 @@
             <div class="team-card" onclick="openModal('sara')">
               <div class="team-image">
                 <div class="team-avatar">
-                  <span class="avatar-placeholder">SS</span>
+                  <img src="<%= require('./assets/images/sarapicture.jpg') %>" alt="Sara Farrukh Saeed">
                 </div>
               </div>
               <div class="team-content">
@@ -161,7 +183,7 @@
             <div class="team-card" onclick="openModal('mahjabeen')">
               <div class="team-image">
                 <div class="team-avatar">
-                  <span class="avatar-placeholder">MA</span>
+                  <img src="<%= require('./assets/images/mahjabeenpicture.jpg') %>" alt="Mahjabeen Alam">
                 </div>
               </div>
               <div class="team-content">
@@ -176,7 +198,7 @@
             <div class="team-card" onclick="openModal('rudra')">
               <div class="team-image">
                 <div class="team-avatar">
-                  <span class="avatar-placeholder">RP</span>
+                  <img src="<%= require('./assets/images/rudrapicture.jpeg') %>" alt="Rudra Patel">
                 </div>
               </div>
               <div class="team-content">
@@ -190,7 +212,7 @@
             <div class="team-card" onclick="openModal('moulik')">
               <div class="team-image">
                 <div class="team-avatar">
-                  <span class="avatar-placeholder">MG</span>
+                  <img src="<%= require('./assets/images/moulikpicture.jpg') %>" alt="Moulik Gaglani">
                 </div>
               </div>
               <div class="team-content">
@@ -204,7 +226,7 @@
             <div class="team-card" onclick="openModal('huzaifa')">
               <div class="team-image">
                 <div class="team-avatar">
-                  <span class="avatar-placeholder">HG</span>
+                  <img src="<%= require('./assets/images/huzaifapicture.jpg') %>" alt="Huzaifa Galely">
                 </div>
               </div>
               <div class="team-content">
@@ -268,7 +290,9 @@
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal('mohaimen')">&times;</span>
       <div class="modal-header">
-        <div class="modal-avatar">MH</div>
+        <div class="modal-avatar">
+          <img src="<%= require('./assets/images/mohaimenpicture.jpg') %>" alt="Mohaimen Khan">
+        </div>
         <div class="modal-title">
           <h2>Mohaimen Hasan</h2>
           <p>Co-Founder & Technical Lead</p>
@@ -287,7 +311,9 @@
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal('sara')">&times;</span>
       <div class="modal-header">
-        <div class="modal-avatar">SS</div>
+        <div class="modal-avatar">
+          <img src="<%= require('./assets/images/sarapicture.jpg') %>" alt="Sara Farrukh Saeed">
+        </div>
         <div class="modal-title">
           <h2>Sara Farrukh Saeed</h2>
           <p>Co-Founder & Data Science Lead</p>
@@ -306,7 +332,9 @@
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal('mahjabeen')">&times;</span>
       <div class="modal-header">
-        <div class="modal-avatar">MA</div>
+        <div class="modal-avatar">
+          <img src="<%= require('./assets/images/mahjabeenpicture.jpg') %>" alt="Mahjabeen Alam">
+        </div>
         <div class="modal-title">
           <h2>Mahjabeen Alam</h2>
           <p>Co-Founder & Product Lead</p>
@@ -325,7 +353,9 @@
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal('rudra')">&times;</span>
       <div class="modal-header">
-        <div class="modal-avatar">RP</div>
+        <div class="modal-avatar">
+          <img src="<%= require('./assets/images/rudrapicture.jpeg') %>" alt="Rudra Patel">
+        </div>
         <div class="modal-title">
           <h2>Rudra Patel</h2>
           <p>Co-Founder & Business Strategy Lead</p>
@@ -344,7 +374,9 @@
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal('moulik')">&times;</span>
       <div class="modal-header">
-        <div class="modal-avatar">MG</div>
+        <div class="modal-avatar">
+          <img src="<%= require('./assets/images/moulikpicture.jpg') %>" alt="Moulik Gaglani">
+        </div>
         <div class="modal-title">
           <h2>Moulik Gaglani</h2>
           <p>Co-Founder & Technical Lead</p>
@@ -363,7 +395,9 @@
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal('huzaifa')">&times;</span>
       <div class="modal-header">
-        <div class="modal-avatar">HG</div>
+        <div class="modal-avatar">
+          <img src="<%= require('./assets/images/huzaifapicture.jpg') %>" alt="Huzaifa Galely">
+        </div>
         <div class="modal-title">
           <h2>Huzaifa Galely</h2>
           <p>Co-Founder & Technical Lead</p>
