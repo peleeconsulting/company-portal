@@ -196,6 +196,7 @@ header {
   padding: 0;
   margin: 0;
 }
+/* adding a test comment */
 
 header.scrolled {
   background-color: var(--white);
