@@ -290,13 +290,17 @@ header.scrolled .nav-link {
 
 .six-stack-container {
   position: relative;
-  width: 100%;
+  width: 400px; /* Fixed width for better centering */
   height: 500px;  /* Shortened height now that we're positioning relative to bottom */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end; /* Align to bottom to match with button */
   perspective: 1000px; /* Add subtle 3D effect */
+  margin: 0 auto; /* Center horizontally */
+  left: 0; /* Reset any potential left offset */
+  right: 0; /* Ensure centering */
+  transform: none; /* Remove any transforms that might affect positioning */
 }
 
 .stack-layer {
@@ -320,8 +324,11 @@ header.scrolled .nav-link {
   overflow: hidden;
   border: 2px solid var(--primary-color);
   will-change: transform, opacity, top;
-  left: 50%;
-  transform: translate(-50%, 350px); /* Start from much further down */
+  left: 0; /* Start centered */
+  right: 0; /* Start centered */
+  margin-left: auto; /* Center the layer */
+  margin-right: auto; /* Center the layer */
+  transform: translateY(350px); /* Only translate vertically */
 }
 
 /* Machine Learning Layer */
@@ -420,7 +427,7 @@ header.scrolled .nav-link {
 /* Visible layers with stacked appearance */
 .stack-layer.visible {
   opacity: 1;
-  transform: translate(-50%, 0);
+  transform: translateY(0);
 }
 
 .puzzle-piece-icon {
@@ -571,6 +578,25 @@ header.scrolled .nav-link {
 .about {
   position: relative;
   overflow: hidden;
+}
+
+.about .container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.text-section {
+  flex: 1 1 600px;
+  padding-right: 2rem;
+}
+
+.stack-section {
+  flex: 1 1 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0; /* Remove any potential left padding */
+  margin-left: 0; /* Remove any potential left margin */
 }
 
 .about-image {
@@ -1295,6 +1321,51 @@ footer {
   }
 }
 
+@media (max-width: 1550px) {
+  /* Override Bootstrap container padding for better centering */
+  .container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Make flex items stack vertically on smaller screens */
+  .about .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Center text on small screens */
+  .text-section {
+    text-align: center;
+    padding-right: 0;
+    padding-left: 0;
+    margin-bottom: 2rem;
+    max-width: 800px;
+  }
+  
+  /* Make stack section full width but centered */
+  .stack-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0; /* Remove all padding */
+    margin: 0 auto; /* Center with auto margins */
+    max-width: 400px; /* Match the stack container width */
+  }
+  
+  .six-stack-container {
+    height: 420px;
+    margin: 2rem auto;
+    position: static; /* Reset positioning */
+  }
+  
+  /* Center section title underline */
+  .section-title:after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
 @media (max-width: 767.98px) {
   .hero h1 {
     font-size: 3rem;
@@ -1311,6 +1382,16 @@ footer {
   
   .footer-widget {
     margin-bottom: 2rem;
+  }
+  
+  /* Adjust stack size for medium screens */
+  .six-stack-container {
+    height: 400px;
+  }
+  
+  /* Adjust layer height for better fit */
+  .stack-layer {
+    height: 60px;
   }
 }
 
@@ -1339,4 +1420,32 @@ footer {
     margin-bottom: 1rem;
     margin-right: 0;
   }
+  
+  /* Further adjust stack for small screens */
+  .six-stack-container {
+    height: 350px;
+  }
+  
+  /* Make stack layers smaller on mobile */
+  .stack-layer {
+    height: 50px;
+    max-width: 280px;
+  }
+  
+  .stack-layer h3 {
+    font-size: 0.85rem;
+  }
+  
+  .stack-layer-icon {
+    font-size: 1.1rem;
+    margin-right: 0.5rem;
+  }
+  
+  /* Adjust spacing between layers for smaller screens */
+  .stack-layer[data-piece="5"] { top: calc(100% - 100px); }
+  .stack-layer[data-piece="4"] { top: calc(100% - 155px); }
+  .stack-layer[data-piece="3"] { top: calc(100% - 210px); }
+  .stack-layer[data-piece="2"] { top: calc(100% - 265px); }
+  .stack-layer[data-piece="1"] { top: calc(100% - 320px); }
+  .stack-layer[data-piece="0"] { top: calc(100% - 375px); }
 }
