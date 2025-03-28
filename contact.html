@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us - 6ixStack Solutions</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <meta name="description" content="Get in touch with 6ixStack Solutions. We're ready to discuss your tech challenges and how we can help your small business grow.">
 <script defer src="main.bundle.js"></script></head>
@@ -22,13 +23,14 @@
     <!-- Contact Form Section -->
     <section class="contact-form-section py-5">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-6" data-aos="fade-right">
+        <!-- Get In Touch Section (Centered) -->
+        <div class="row justify-content-center mb-5">
+          <div class="col-lg-8 text-center" data-aos="fade-up">
             <h2 class="section-title">Get In Touch</h2>
             <p class="lead">We're eager to hear about your business challenges and how we can help.</p>
             <p>Fill out the form below, and one of our consultants will reach out to schedule a free initial consultation.</p>
             
-            <form id="contact-form" class="contact-form">
+            <form id="contact-form" class="contact-form text-start">
               <div class="mb-3">
                 <label for="name" class="form-label">Full Name*</label>
                 <input type="text" class="form-control" id="name" required>
@@ -66,62 +68,55 @@
                 <input type="checkbox" class="form-check-input" id="privacy" required>
                 <label class="form-check-label" for="privacy">I agree to the privacy policy and consent to being contacted about my inquiry.*</label>
               </div>
-              <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+              </div>
             </form>
           </div>
-          
-          <div class="col-lg-5 offset-lg-1" data-aos="fade-left">
-            <div class="contact-info">
+        </div>
+
+        <!-- Contact Information Section (Centered, Below Form) -->
+        <div class="row justify-content-center">
+          <div class="col-lg-8" data-aos="fade-up">
+            <div class="contact-info text-center">
               <h2 class="section-title">Contact Information</h2>
-              <div class="contact-card">
-                <div class="contact-item">
-                  <div class="contact-icon">
+              <div class="contact-card d-flex flex-column align-items-center">
+                <div class="contact-item mb-4 d-flex flex-column align-items-center">
+                  <div class="contact-icon mb-2">
                     <i class="fas fa-envelope"></i>
                   </div>
-                  <div class="contact-text">
+                  <div class="contact-text text-center">
                     <h3>Email Us</h3>
                     <p><a href="mailto:admin@6ixstack.com">admin@6ixstack.com</a></p>
                     <p class="text-muted">We respond to all inquiries within 24 hours.</p>
                   </div>
                 </div>
                 
-                <div class="contact-item">
-                  <div class="contact-icon">
+                <div class="contact-item mb-4 d-flex flex-column align-items-center">
+                  <div class="contact-icon mb-2">
                     <i class="fas fa-phone-alt"></i>
                   </div>
-                  <div class="contact-text">
+                  <div class="contact-text text-center">
                     <h3>Call Us</h3>
                     <p><a href="tel:+12068329589">(206) 832-9589</a></p>
                     <p class="text-muted">Available Monday-Friday, 9AM-5PM EST</p>
                   </div>
                 </div>
                 
-                <div class="contact-item">
-                  <div class="contact-icon">
-                    <i class="fas fa-map-marker-alt"></i>
-                  </div>
-                  <div class="contact-text">
-                    <h3>Visit Us</h3>
-                    <p>50 Mont Joy Crescent<br>Brampton, ON L6S 3E7</p>
-                    <p class="text-muted">By appointment only</p>
-                  </div>
-                </div>
-                
-                <div class="contact-item">
-                  <div class="contact-icon">
+                <div class="contact-item mb-4 d-flex flex-column align-items-center">
+                  <div class="contact-icon mb-2">
                     <i class="fas fa-clock"></i>
                   </div>
-                  <div class="contact-text">
+                  <div class="contact-text text-center">
                     <h3>Business Hours</h3>
-                    <p>Monday-Friday: 9AM-5PM EST<br>Saturday-Sunday: Closed</p>
-                    <p class="text-muted">Virtual meetings available outside business hours</p>
+                    <p>Monday-Friday: 9AM-9PM EST<br>Saturday-Sunday: Closed</p>
                   </div>
                 </div>
               </div>
               
-              <div class="social-links mt-4">
+              <div class="social-links mt-4 text-center">
                 <h3>Connect With Us</h3>
-                <div class="social-icons">
+                <div class="social-icons d-flex justify-content-center gap-3 mt-3">
                   <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
                   <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
                   <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
@@ -206,19 +201,6 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Map Section -->
-    <section class="map-section">
-      <div class="map-container">
-        <div class="map-placeholder d-flex align-items-center justify-content-center bg-light" style="height: 400px;" data-aos="fade-up">
-          <div class="text-center">
-            <i class="fas fa-map-marked-alt fa-4x text-primary mb-3"></i>
-            <h3>Interactive Map</h3>
-            <p>Map will be loaded here in the live version</p>
           </div>
         </div>
       </div>
