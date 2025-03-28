@@ -33,6 +33,31 @@ body {
   overflow-x: hidden;
   font-size: 1rem;
   font-weight: 400;
+  scroll-behavior: smooth;
+  perspective: 1000px;
+}
+
+/* Smooth scrolling effect */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Fade-in animation for scroll effects */
+.fade-in-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add 3D perspective to elements */
+.has-perspective {
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -238,6 +263,273 @@ header.scrolled .nav-link {
   color: var(--white);
 }
 
+/* 6ix Stack Interactive Section */
+.six-stack-section {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: var(--gray-100);
+  padding: 5rem 0;
+  margin-bottom: 3rem;
+}
+
+.stack-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 600px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.puzzle-pieces-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.six-stack-container {
+  position: relative;
+  width: 100%;
+  height: 500px;  /* Shortened height now that we're positioning relative to bottom */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end; /* Align to bottom to match with button */
+  perspective: 1000px; /* Add subtle 3D effect */
+}
+
+.stack-layer {
+  position: absolute;
+  width: 90%;
+  max-width: 400px;
+  height: 70px; /* Taller layers */
+  background-color: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Stronger shadow for depth */
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1.5rem;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              opacity 0.6s ease,
+              top 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0;
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid var(--primary-color);
+  will-change: transform, opacity, top;
+  left: 50%;
+  transform: translate(-50%, 350px); /* Start from much further down */
+}
+
+/* Machine Learning Layer */
+.stack-layer[data-piece="0"] {
+  background-color: rgba(211, 54, 122, 0.15);
+  z-index: 15;
+}
+
+/* Web & Mobile Applications Layer */
+.stack-layer[data-piece="1"] {
+  background-color: rgba(251, 173, 24, 0.15);
+  z-index: 14;
+}
+
+/* Data Analytics Layer */
+.stack-layer[data-piece="2"] {
+  background-color: rgba(211, 54, 122, 0.2);
+  z-index: 13;
+}
+
+/* Cloud Solutions Layer */
+.stack-layer[data-piece="3"] {
+  background-color: rgba(251, 173, 24, 0.2);
+  z-index: 12;
+}
+
+/* IT Strategy Layer */
+.stack-layer[data-piece="4"] {
+  background-color: rgba(211, 54, 122, 0.25);
+  z-index: 11;
+}
+
+/* Cybersecurity Layer */
+.stack-layer[data-piece="5"] {
+  background-color: rgba(251, 173, 24, 0.25);
+  z-index: 10;
+}
+
+.stack-layer h3 {
+  font-size: 1.1rem;
+  margin: 0;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.stack-layer-icon {
+  font-size: 1.6rem;
+  color: var(--primary-color);
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+}
+
+.stack-layer:hover .stack-layer-icon {
+  transform: scale(1.2);
+}
+
+/* Stacked layout with each layer at its final position */
+.stack-layer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Final stacked positions - adjusted a tiny bit higher */
+.stack-layer[data-piece="5"] {
+  top: calc(100% - 120px); /* Bottom layer, moved higher */
+  z-index: 1;
+}
+
+.stack-layer[data-piece="4"] {
+  top: calc(100% - 180px); /* 60px above the bottom layer */
+  z-index: 2;
+}
+
+.stack-layer[data-piece="3"] {
+  top: calc(100% - 240px); /* 60px above the previous layer */
+  z-index: 3;
+}
+
+.stack-layer[data-piece="2"] {
+  top: calc(100% - 300px); /* 60px above the previous layer */
+  z-index: 4;
+}
+
+.stack-layer[data-piece="1"] {
+  top: calc(100% - 360px); /* 60px above the previous layer */
+  z-index: 5;
+}
+
+.stack-layer[data-piece="0"] {
+  top: calc(100% - 420px); /* 60px above the previous layer */
+  z-index: 6;
+}
+
+/* Visible layers with stacked appearance */
+.stack-layer.visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.puzzle-piece-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.puzzle-piece:hover .puzzle-piece-icon {
+  transform: scale(1.2);
+}
+
+.puzzle-piece h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.puzzle-piece p {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  line-height: 1.4;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease, max-height 0.4s ease;
+}
+
+.puzzle-piece.expanded p {
+  opacity: 1;
+  max-height: 150px;
+  margin-top: 1rem;
+}
+
+.stack-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--primary-color);
+}
+
+.puzzle-complete {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 30;
+}
+
+.puzzle-complete.active {
+  opacity: 1;
+}
+
+.puzzle-complete h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+}
+
+.puzzle-complete p {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  max-width: 90%;
+}
+
+/* Animation states for scroll-driven assembly - from sides and corners */
+.six-stack-section.unassembled .puzzle-piece[data-piece="0"] {
+  transform: translate(-300%, 0) rotate(-90deg);
+  opacity: 0;
+}
+
+.six-stack-section.unassembled .puzzle-piece[data-piece="1"] {
+  transform: translate(0, -300%) rotate(90deg);
+  opacity: 0;
+}
+
+.six-stack-section.unassembled .puzzle-piece[data-piece="2"] {
+  transform: translate(300%, 0) rotate(90deg); 
+  opacity: 0;
+}
+
+.six-stack-section.unassembled .puzzle-piece[data-piece="3"] {
+  transform: translate(-300%, 150%) rotate(-90deg);
+  opacity: 0;
+}
+
+.six-stack-section.unassembled .puzzle-piece[data-piece="4"] {
+  transform: translate(0, 300%) rotate(-90deg);
+  opacity: 0;
+}
+
+.six-stack-section.unassembled .puzzle-piece[data-piece="5"] {
+  transform: translate(300%, 150%) rotate(90deg);
+  opacity: 0;
+}
+
 .canvas-container {
   position: absolute;
   top: 0;
@@ -304,33 +596,75 @@ header.scrolled .nav-link {
   background-color: var(--white);
   border-radius: 15px;
   padding: 2.5rem;
-  transition: var(--transition);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   height: 100%;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
   border: 1px solid var(--gray-200);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer; /* Add pointer cursor */
 }
 
 .service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow);
+  transform: translateY(-10px) rotateX(3deg) rotateY(3deg);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-color: rgba(211, 54, 122, 0.2);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: all 0.3s ease;
 }
 
 .service-icon {
-  background-color: rgba(75, 108, 193, 0.1);
+  background-color: rgba(211, 54, 122, 0.1);
   color: var(--primary-color);
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  z-index: 2;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.15) translateZ(20px);
+  box-shadow: 0 10px 20px rgba(211, 54, 122, 0.2);
+  background-color: var(--primary-color);
+  color: var(--white);
 }
 
 .service-card h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  transition: transform 0.5s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.service-card:hover h3 {
+  transform: translateZ(15px);
+  color: var(--primary-color);
 }
 
 /* Why Choose Us Section */
@@ -558,6 +892,7 @@ header.scrolled .nav-link {
 
 .solution-section {
   position: relative;
+  overflow: hidden;
 }
 
 .solution-image {
@@ -565,6 +900,7 @@ header.scrolled .nav-link {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .code-animation, .device-mockups, .analytics-animation, .cloud-animation, .security-animation, .strategy-animation {
@@ -578,6 +914,41 @@ header.scrolled .nav-link {
   justify-content: center;
   color: var(--gray-600);
   font-size: 1.5rem;
+  overflow: hidden;
+}
+
+.solution-icon-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.icon-particle {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.solution-section.in-view .icon-particle {
+  opacity: 0.7;
+  transform: scale(1);
+}
+
+.solution-section.in-view .solution-icon {
+  transform: scale(1.2);
+  color: var(--primary-color);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .solution-subtitle {

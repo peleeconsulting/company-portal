@@ -279,64 +279,169 @@ const initAnimations = () => {
     }
   }
   
-  // Moving particles in Why Us section
+  // Moving particles in Why Us section - Enhanced with interactive effects
   const movingParticles = document.querySelector('.moving-particles');
   if (movingParticles) {
-    for (let i = 0; i < 30; i++) {
+    // Create a richer particle system
+    for (let i = 0; i < 40; i++) {
       const particle = document.createElement('div');
       particle.classList.add('moving-particle');
-      particle.style.width = `${Math.random() * 15 + 5}px`;
-      particle.style.height = particle.style.width;
-      particle.style.backgroundColor = `rgba(75, 108, 193, ${Math.random() * 0.5 + 0.2})`;
+      
+      // Varied sizes for depth perception
+      const size = Math.random() * 20 + 5;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      
+      // Use primary and secondary colors
+      const colorChoice = Math.random();
+      const color = colorChoice > 0.5 
+        ? `rgba(211, 54, 122, ${Math.random() * 0.6 + 0.2})` // Primary (pink)
+        : `rgba(251, 173, 24, ${Math.random() * 0.6 + 0.2})`; // Secondary (yellow)
+      
+      particle.style.backgroundColor = color;
       particle.style.position = 'absolute';
       particle.style.borderRadius = '50%';
       particle.style.left = `${Math.random() * 100}%`;
       particle.style.top = `${Math.random() * 100}%`;
+      particle.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
+      particle.style.zIndex = Math.floor(size); // Larger particles appear on top
       
       movingParticles.appendChild(particle);
       
+      // More complex animation paths
       gsap.to(particle, {
-        x: Math.random() * 100 - 50,
-        y: Math.random() * 100 - 50,
-        duration: 3 + Math.random() * 5,
+        x: Math.random() * 150 - 75,
+        y: Math.random() * 150 - 75,
+        scale: Math.random() * 1.5 + 0.5,
+        rotation: Math.random() * 720 - 360,
+        duration: 4 + Math.random() * 8,
         repeat: -1,
         yoyo: true,
         ease: 'sine.inOut',
+        delay: Math.random() * 2,
       });
     }
+    
+    // Add magnetic effect when cursor is near
+    movingParticles.addEventListener('mousemove', (e) => {
+      const rect = movingParticles.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+      
+      const particles = movingParticles.querySelectorAll('.moving-particle');
+      particles.forEach(particle => {
+        const particleRect = particle.getBoundingClientRect();
+        const particleCenterX = particleRect.left + particleRect.width / 2 - rect.left;
+        const particleCenterY = particleRect.top + particleRect.height / 2 - rect.top;
+        
+        const distanceX = mouseX - particleCenterX;
+        const distanceY = mouseY - particleCenterY;
+        const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+        const maxDistance = 150;
+        
+        if (distance < maxDistance) {
+          const force = (maxDistance - distance) / maxDistance;
+          const directionX = distanceX > 0 ? 1 : -1;
+          const directionY = distanceY > 0 ? 1 : -1;
+          
+          gsap.to(particle, {
+            x: `+=${directionX * force * 40}`,
+            y: `+=${directionY * force * 40}`,
+            scale: 1 + force * 0.5,
+            duration: 0.8,
+            ease: 'power2.out',
+            overwrite: 'auto',
+          });
+        }
+      });
+    });
   }
   
-  // Testimonial slider
+  // Testimonial slider with enhanced transitions
   const testimonialSlider = document.querySelector('.testimonial-slider');
   if (testimonialSlider) {
     const testimonials = testimonialSlider.querySelectorAll('.testimonial-item');
     let currentTestimonial = 0;
     
+    // Create navigation dots
+    const navContainer = document.createElement('div');
+    navContainer.className = 'testimonial-nav';
+    navContainer.style.display = 'flex';
+    navContainer.style.justifyContent = 'center';
+    navContainer.style.marginTop = '2rem';
+    
+    testimonials.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.className = 'testimonial-dot';
+      dot.style.width = '12px';
+      dot.style.height = '12px';
+      dot.style.borderRadius = '50%';
+      dot.style.border = 'none';
+      dot.style.margin = '0 5px';
+      dot.style.backgroundColor = index === 0 ? 'var(--primary-color)' : 'var(--gray-400)';
+      dot.style.transition = 'all 0.3s ease';
+      dot.style.cursor = 'pointer';
+      
+      dot.addEventListener('click', () => {
+        showTestimonial(index);
+        resetAutoPlay();
+      });
+      
+      navContainer.appendChild(dot);
+    });
+    
+    testimonialSlider.parentNode.appendChild(navContainer);
+    
     const showTestimonial = (index) => {
+      // Update navigation dots
+      const dots = navContainer.querySelectorAll('.testimonial-dot');
+      dots.forEach((dot, i) => {
+        dot.style.backgroundColor = i === index ? 'var(--primary-color)' : 'var(--gray-400)';
+        dot.style.transform = i === index ? 'scale(1.2)' : 'scale(1)';
+      });
+      
+      // Create more dramatic transition
       testimonials.forEach((item, i) => {
         if (i === index) {
           item.style.display = 'block';
           gsap.fromTo(item, 
-            { opacity: 0, y: 20 }, 
-            { opacity: 1, y: 0, duration: 0.8 }
+            { opacity: 0, y: 30, scale: 0.95 }, 
+            { opacity: 1, y: 0, scale: 1, duration: 0.9, ease: 'power3.out' }
           );
         } else {
-          item.style.display = 'none';
+          gsap.to(item, { 
+            opacity: 0, 
+            y: -30, 
+            scale: 0.95, 
+            duration: 0.7, 
+            ease: 'power3.in',
+            onComplete: () => { item.style.display = 'none'; }
+          });
         }
       });
+      
+      currentTestimonial = index;
+    };
+    
+    let autoPlayTimer;
+    
+    const resetAutoPlay = () => {
+      clearInterval(autoPlayTimer);
+      autoPlayTimer = setInterval(() => {
+        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        showTestimonial(currentTestimonial);
+      }, 6000);
     };
     
     showTestimonial(0);
-    
-    setInterval(() => {
-      currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-      showTestimonial(currentTestimonial);
-    }, 5000);
+    resetAutoPlay();
   }
   
-  // Solution section animations
+  // Enhanced solution section animations - these will be further enhanced by the 
+  // initSolutionInteractions function, but we'll still initialize the basic animations here
+  
   const codeAnimation = document.querySelector('.code-animation');
-  if (codeAnimation) {
+  if (codeAnimation && !codeAnimation.querySelector('.solution-icon')) {
     codeAnimation.innerHTML = '<i class="fas fa-code fa-3x"></i>';
     gsap.to(codeAnimation.querySelector('i'), {
       scale: 1.2,
@@ -348,7 +453,7 @@ const initAnimations = () => {
   }
   
   const deviceMockups = document.querySelector('.device-mockups');
-  if (deviceMockups) {
+  if (deviceMockups && !deviceMockups.querySelector('.solution-icon')) {
     deviceMockups.innerHTML = '<i class="fas fa-mobile-alt fa-3x"></i>';
     gsap.to(deviceMockups.querySelector('i'), {
       y: -10,
@@ -360,7 +465,7 @@ const initAnimations = () => {
   }
   
   const analyticsAnimation = document.querySelector('.analytics-animation');
-  if (analyticsAnimation) {
+  if (analyticsAnimation && !analyticsAnimation.querySelector('.solution-icon')) {
     analyticsAnimation.innerHTML = '<i class="fas fa-chart-line fa-3x"></i>';
     gsap.to(analyticsAnimation.querySelector('i'), {
       rotation: 10,
@@ -372,7 +477,7 @@ const initAnimations = () => {
   }
   
   const cloudAnimation = document.querySelector('.cloud-animation');
-  if (cloudAnimation) {
+  if (cloudAnimation && !cloudAnimation.querySelector('.solution-icon')) {
     cloudAnimation.innerHTML = '<i class="fas fa-cloud fa-3x"></i>';
     gsap.to(cloudAnimation.querySelector('i'), {
       y: -10,
@@ -385,7 +490,7 @@ const initAnimations = () => {
   }
   
   const securityAnimation = document.querySelector('.security-animation');
-  if (securityAnimation) {
+  if (securityAnimation && !securityAnimation.querySelector('.solution-icon')) {
     securityAnimation.innerHTML = '<i class="fas fa-shield-alt fa-3x"></i>';
     gsap.to(securityAnimation.querySelector('i'), {
       rotationY: 360,
@@ -396,7 +501,7 @@ const initAnimations = () => {
   }
   
   const strategyAnimation = document.querySelector('.strategy-animation');
-  if (strategyAnimation) {
+  if (strategyAnimation && !strategyAnimation.querySelector('.solution-icon')) {
     strategyAnimation.innerHTML = '<i class="fas fa-lightbulb fa-3x"></i>';
     gsap.to(strategyAnimation.querySelector('i'), {
       opacity: 0.6,
@@ -404,6 +509,26 @@ const initAnimations = () => {
       repeat: -1,
       yoyo: true,
       ease: 'sine.inOut',
+    });
+  }
+  
+  // Add scroll-triggered animations
+  const observeElements = document.querySelectorAll('.fade-in-on-scroll');
+  if (observeElements.length > 0) {
+    const fadeInObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            fadeInObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    
+    observeElements.forEach(element => {
+      fadeInObserver.observe(element);
     });
   }
 };
@@ -454,6 +579,400 @@ const initContactForm = () => {
   });
 };
 
+// Initialize 6ix Stack Animation in About Section
+const initSixStackSection = () => {
+  const stackContainer = document.querySelector('.six-stack-container');
+  if (!stackContainer) return;
+  
+  const stackLayers = stackContainer.querySelectorAll('.stack-layer');
+  if (stackLayers.length === 0) return;
+  
+  // Initialize layers - hide them initially
+  stackLayers.forEach(layer => {
+    gsap.set(layer, {
+      opacity: 0,
+      y: 200,
+      scale: 0.9
+    });
+  });
+  
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+  let aboutSectionTop = 0;
+  let aboutSectionHeight = 0;
+  
+  // Get hero and about section positions
+  const updateSectionPositions = () => {
+    const heroSection = document.querySelector('.hero');
+    const aboutSection = document.querySelector('.about');
+    
+    if (heroSection && aboutSection) {
+      // Start from halfway through the hero section
+      const heroRect = heroSection.getBoundingClientRect();
+      const aboutRect = aboutSection.getBoundingClientRect();
+      
+      // Calculate the starting point (40% into the hero section - slightly later start)
+      aboutSectionTop = window.scrollY + heroRect.top + (heroRect.height * 0.4);
+      
+      // Use the distance between hero start point and just before the Meet Our Team button
+      const aboutContent = aboutSection.querySelector('.btn-outline-primary');
+      const buttonPosition = aboutContent ? 
+                            aboutContent.getBoundingClientRect().top + window.scrollY - 50 : 
+                            aboutRect.top + aboutRect.height * 0.7 + window.scrollY;
+                                          
+      // The total distance to animate over - much shorter for faster animation
+      aboutSectionHeight = (buttonPosition - aboutSectionTop) * 0.7; // Reduce animation distance by 30%
+    }
+  };
+  
+  // Initial measurement
+  updateSectionPositions();
+  
+  // Update measurements on resize
+  window.addEventListener('resize', updateSectionPositions);
+  
+  // Simple function to handle scroll events
+  const onScroll = () => {
+    lastScrollY = window.scrollY;
+    
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateLayersOnScroll(lastScrollY);
+        ticking = false;
+      });
+      
+      ticking = true;
+    }
+  };
+  
+  // Function to update layer visibility based on scroll position
+  const updateLayersOnScroll = (scrollY) => {
+    // Calculate scroll progress relative to our starting point (mid-hero section)
+    const scrollProgress = scrollY - aboutSectionTop;
+    
+    // Process even before we reach the about section
+    if (scrollProgress < -aboutSectionHeight || scrollProgress > aboutSectionHeight * 1.5) return;
+    
+    // Calculate progress (0 to 1)
+    // Start when scrolling down from hero and finish by Meet Our Team
+    const sectionProgress = Math.max(0, Math.min(1, scrollProgress / aboutSectionHeight));
+    
+    // Update each layer based on scroll progress
+    stackLayers.forEach((layer, index) => {
+      // Reverse index (5 to 0) so bottom layer comes in first
+      const reversedIndex = 5 - index;
+      
+      // Each layer appears at a different scroll percentage - even more compressed for much faster stacking
+      const layerThreshold = reversedIndex * 0.04; // 0.2, 0.16, 0.12, 0.08, 0.04, 0 - reduced gaps
+      
+      // Calculate progress for this specific layer - extremely fast transitions
+      const layerProgress = Math.max(0, Math.min(1, (sectionProgress - layerThreshold) / 0.03));
+      
+      if (layerProgress > 0) {
+        // Bring in the layer proportional to scroll - with faster animation
+        gsap.to(layer, {
+          opacity: layerProgress,
+          y: 200 * (1 - layerProgress),
+          scale: 0.9 + (0.1 * layerProgress),
+          duration: 0.1, // Ultra-fast updates for immediate response
+          ease: "power2.out", // Stronger easing for snappier animation
+          onComplete: () => {
+            if (layerProgress >= 1) {
+              layer.classList.add('visible');
+            } else {
+              layer.classList.remove('visible');
+            }
+          }
+        });
+      } else {
+        // Hide the layer when scrolled up past its threshold - faster
+        gsap.to(layer, {
+          opacity: 0,
+          y: 200,
+          scale: 0.9,
+          duration: 0.1, // Faster hiding
+          ease: "power2.in", // Stronger easing
+          onComplete: () => {
+            layer.classList.remove('visible');
+          }
+        });
+      }
+    });
+  };
+  
+  // Attach scroll listener
+  window.addEventListener('scroll', onScroll);
+  
+  // Initial update
+  updateLayersOnScroll(window.scrollY);
+  
+  // Add hover effect to emphasize each layer
+  stackLayers.forEach((layer, index) => {
+    layer.addEventListener('mouseenter', () => {
+      // Only apply effects when layers are visible
+      if (layer.classList.contains('visible')) {
+        // Get the current top position from CSS
+        const computedStyle = window.getComputedStyle(layer);
+        const currentTop = parseFloat(computedStyle.top);
+        
+        // More lift for hover effect
+        gsap.to(layer, {
+          y: -10,
+          scale: 1.05,
+          boxShadow: "0 20px 35px rgba(0,0,0,0.2)",
+          duration: 0.3,
+          ease: "power2.out",
+          zIndex: 10 // Bring hovered layer to front
+        });
+        
+        // Move other layers slightly to create space
+        stackLayers.forEach((otherLayer, otherIndex) => {
+          if (otherIndex !== index && otherLayer.classList.contains('visible')) {
+            // Move layers above the hovered one up
+            if (otherIndex < index) {
+              gsap.to(otherLayer, {
+                y: -5,
+                duration: 0.3,
+                ease: "power2.out"
+              });
+            }
+            // Move layers below the hovered one down
+            else {
+              gsap.to(otherLayer, {
+                y: 5,
+                duration: 0.3,
+                ease: "power2.out"
+              });
+            }
+          }
+        });
+      }
+    });
+    
+    layer.addEventListener('mouseleave', () => {
+      // Reset this layer
+      gsap.to(layer, {
+        y: 0,
+        scale: 1,
+        boxShadow: "0 5px 15px rgba(0,0,0,0.15)",
+        duration: 0.3,
+        ease: "power2.out",
+        zIndex: 5 - index // Reset z-index based on layer position
+      });
+      
+      // Reset other layers
+      stackLayers.forEach((otherLayer, otherIndex) => {
+        if (otherIndex !== index && otherLayer.classList.contains('visible')) {
+          gsap.to(otherLayer, {
+            y: 0,
+            duration: 0.3,
+            ease: "power2.out"
+          });
+        }
+      });
+    });
+  });
+}
+
+// Initialize solution section interactive elements with enhanced scrolling effects
+const initSolutionInteractions = () => {
+  const solutionSections = document.querySelectorAll('.solution-section');
+  if (solutionSections.length === 0) return;
+  
+  solutionSections.forEach(section => {
+    const iconContainer = section.querySelector('.solution-icon-particles');
+    if (!iconContainer) return;
+    
+    const mainIcon = section.querySelector('.solution-icon');
+    if (!mainIcon) return;
+    
+    // Create particles for each solution icon
+    const iconClass = mainIcon.className.split(' ').find(className => 
+      className.startsWith('fa-') && className !== 'fa-3x'
+    );
+    
+    // Create smaller icons that will float around the main icon
+    for (let i = 0; i < 15; i++) {
+      const particle = document.createElement('i');
+      particle.className = `fas ${iconClass} icon-particle`;
+      
+      // Random position within the container
+      const randomX = Math.random() * 100;
+      const randomY = Math.random() * 100;
+      
+      // Random size for depth perception
+      const randomSize = 0.3 + Math.random() * 0.6;
+      
+      particle.style.left = `${randomX}%`;
+      particle.style.top = `${randomY}%`;
+      particle.style.fontSize = `${randomSize}rem`;
+      
+      // Random delay for animation
+      particle.style.transitionDelay = `${Math.random() * 1.5}s`;
+      
+      iconContainer.appendChild(particle);
+    }
+    
+    // Create scroll-linked animation effect
+    // We'll use both intersection observer for visibility 
+    // and scroll listener for position-based effects
+    
+    // Initial state - icons are hidden and inactive
+    gsap.set(mainIcon, { scale: 0.5, opacity: 0.2 });
+    
+    // Intersection Observer to detect when section is visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          section.classList.add('in-view');
+          
+          // Animate main icon into view
+          gsap.to(mainIcon, { 
+            scale: 1.2, 
+            opacity: 1, 
+            duration: 0.8, 
+            ease: 'back.out(1.7)' 
+          });
+          
+          // Animate particles with staggered timing
+          const particles = section.querySelectorAll('.icon-particle');
+          gsap.to(particles, {
+            opacity: 0.7,
+            scale: 1,
+            stagger: 0.05,
+            duration: 0.5,
+            ease: 'back.out'
+          });
+          
+          // Add animated movement to particles
+          particles.forEach((particle, index) => {
+            // Create random orbiting motion
+            const radius = 30 + Math.random() * 70;
+            const speed = 5 + Math.random() * 10;
+            const startAngle = Math.random() * Math.PI * 2;
+            
+            gsap.to(particle, {
+              x: Math.cos(startAngle) * radius,
+              y: Math.sin(startAngle) * radius,
+              duration: 0,
+              onComplete: function() {
+                // Start orbiting animation
+                gsap.to(particle, {
+                  rotation: 'random(-720, 720)',
+                  duration: speed,
+                  repeat: -1,
+                  ease: 'none',
+                  modifiers: {
+                    x: function() {
+                      return Math.cos(parseFloat(particle._gsap.startAngle) + parseFloat(particle._gsap.progress) * Math.PI * 2) * radius + 'px';
+                    },
+                    y: function() {
+                      return Math.sin(parseFloat(particle._gsap.startAngle) + parseFloat(particle._gsap.progress) * Math.PI * 2) * radius + 'px';
+                    }
+                  },
+                  startAngle: startAngle
+                });
+              }
+            });
+          });
+          
+          // Add scroll-based parallax effect
+          window.addEventListener('scroll', createScrollHandler(section, mainIcon, particles));
+          
+        } else {
+          // When section leaves viewport
+          section.classList.remove('in-view');
+          
+          // Hide particles
+          const particles = section.querySelectorAll('.icon-particle');
+          gsap.to(particles, {
+            opacity: 0,
+            scale: 0,
+            duration: 0.3,
+            stagger: 0.02
+          });
+          
+          // Shrink main icon
+          gsap.to(mainIcon, { 
+            scale: 0.5, 
+            opacity: 0.2, 
+            duration: 0.5 
+          });
+        }
+      });
+    }, { threshold: 0.2 });
+    
+    // Create a scroll handler for this section
+    function createScrollHandler(section, icon, particles) {
+      return function() {
+        // Only run effect if section is in view
+        if (!section.classList.contains('in-view')) return;
+        
+        const rect = section.getBoundingClientRect();
+        const sectionHeight = rect.height;
+        const sectionTop = rect.top;
+        const scrollPercentage = 1 - (sectionTop / (window.innerHeight - sectionHeight));
+        
+        // Only apply effects when section is in a valid scroll position
+        if (scrollPercentage >= 0 && scrollPercentage <= 1) {
+          // Scale and rotate main icon based on scroll position
+          gsap.to(icon, {
+            scale: 1 + (scrollPercentage * 0.5),
+            rotation: scrollPercentage * 20 - 10,
+            duration: 0.3
+          });
+          
+          // Affect particle speed and size based on scroll
+          particles.forEach((particle) => {
+            // Adjust timeScale of the animation based on scroll
+            if (particle._gsap && particle._gsap.animation) {
+              particle._gsap.animation.timeScale(0.5 + scrollPercentage);
+            }
+            
+            // Adjust particle size
+            gsap.to(particle, {
+              scale: 0.8 + (scrollPercentage * 0.5),
+              duration: 0.3
+            });
+          });
+        }
+      };
+    }
+    
+    observer.observe(section);
+  });
+};
+
+// Helper function to check if element is in viewport
+function isElementInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
+// Create a smooth scroll effect for all internal links
+const initSmoothScroll = () => {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+};
+
 // Initialize all components
 document.addEventListener('DOMContentLoaded', () => {
   initHeader();
@@ -461,6 +980,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroCanvas();
   initAnimations();
   initContactForm();
+  initSixStackSection();
+  initSolutionInteractions();
+  initSmoothScroll();
 });
 
 // Export functions for potential reuse
@@ -469,5 +991,8 @@ export {
   initFooter,
   initHeroCanvas,
   initAnimations,
-  initContactForm
+  initContactForm,
+  initSixStackSection,
+  initSolutionInteractions,
+  initSmoothScroll
 };
