@@ -107,7 +107,13 @@ const initFooter = () => {
             <li>
               <i class="fas fa-phone-alt"></i>
               <div>
-                <a href="tel:+2068329589">(206) 832-9589</a>
+                <a href="tel:+14168943476">+1 (416) 894-3476</a>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-phone-alt"></i>
+              <div>
+                <a href="tel:+16477604720">+1 (647) 760-4720</a>
               </div>
             </li>
             <li>
