@@ -661,11 +661,8 @@ const initSixStackSection = () => {
     
     // Update each layer based on scroll progress
     stackLayers.forEach((layer, index) => {
-      // Reverse index (5 to 0) so bottom layer comes in first
-      const reversedIndex = 5 - index;
-      
-      // Each layer appears at a different scroll percentage - even more compressed for much faster stacking
-      const layerThreshold = reversedIndex * 0.04; // 0.2, 0.16, 0.12, 0.08, 0.04, 0 - reduced gaps
+      // Use index directly (0 to 5) so top layer comes in first
+      const layerThreshold = index * 0.04; // 0, 0.04, 0.08, 0.12, 0.16, 0.2 - reduced gaps
       
       // Calculate progress for this specific layer - extremely fast transitions
       const layerProgress = Math.max(0, Math.min(1, (sectionProgress - layerThreshold) / 0.03));
