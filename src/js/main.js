@@ -173,9 +173,9 @@ const initHeroCanvas = () => {
   const colors = new Float32Array(particlesCount * 3);
   
   const colorOptions = [
-    new THREE.Color('#4b6cc1'), // Primary color
-    new THREE.Color('#1d2b4c'), // Secondary color
-    new THREE.Color('#ff6b35'), // Accent color
+    new THREE.Color('#D3367A'), // Primary color (Pink)
+    new THREE.Color('#FBAD18'), // Secondary color (Yellow)
+    new THREE.Color('#E34B8A'), // Light pink
   ];
   
   for (let i = 0; i < particlesCount; i++) {
