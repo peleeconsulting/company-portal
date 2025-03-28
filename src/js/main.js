@@ -581,7 +581,7 @@ const initContactForm = () => {
   });
 };
 
-// Initialize 6ix Stack Animation in About Section
+// Initialize 6ix Stack Animation in Services Section
 const initSixStackSection = () => {
   const stackContainer = document.querySelector('.six-stack-container');
   if (!stackContainer) return;
@@ -600,30 +600,27 @@ const initSixStackSection = () => {
   
   let lastScrollY = window.scrollY;
   let ticking = false;
-  let aboutSectionTop = 0;
-  let aboutSectionHeight = 0;
+  let servicesSectionTop = 0;
+  let servicesSectionHeight = 0;
   
-  // Get hero and about section positions
+  // Get services section positions
   const updateSectionPositions = () => {
-    const heroSection = document.querySelector('.hero');
-    const aboutSection = document.querySelector('.about');
+    const servicesSection = document.querySelector('.services');
     
-    if (heroSection && aboutSection) {
-      // Start from halfway through the hero section
-      const heroRect = heroSection.getBoundingClientRect();
-      const aboutRect = aboutSection.getBoundingClientRect();
+    if (servicesSection) {
+      const servicesRect = servicesSection.getBoundingClientRect();
       
-      // Calculate the starting point (40% into the hero section - slightly later start)
-      aboutSectionTop = window.scrollY + heroRect.top + (heroRect.height * 0.4);
+      // Start animation when services section is 50% in view (increased from 30%)
+      servicesSectionTop = window.scrollY + servicesRect.top - (window.innerHeight * 0.5);
       
-      // Use the distance between hero start point and just before the Meet Our Team button
-      const aboutContent = aboutSection.querySelector('.btn-outline-primary');
-      const buttonPosition = aboutContent ? 
-                            aboutContent.getBoundingClientRect().top + window.scrollY - 50 : 
-                            aboutRect.top + aboutRect.height * 0.7 + window.scrollY;
+      // Use the distance between services start and the service cards
+      const serviceCards = servicesSection.querySelector('.row');
+      const cardsPosition = serviceCards ? 
+                            serviceCards.getBoundingClientRect().top + window.scrollY - 50 : 
+                            servicesRect.top + servicesRect.height * 0.7 + window.scrollY;
                                           
-      // The total distance to animate over - much shorter for faster animation
-      aboutSectionHeight = (buttonPosition - aboutSectionTop) * 0.7; // Reduce animation distance by 30%
+      // The total distance to animate over - increased for smoother animation
+      servicesSectionHeight = (cardsPosition - servicesSectionTop) * 0.8;
     }
   };
   
@@ -649,23 +646,22 @@ const initSixStackSection = () => {
   
   // Function to update layer visibility based on scroll position
   const updateLayersOnScroll = (scrollY) => {
-    // Calculate scroll progress relative to our starting point (mid-hero section)
-    const scrollProgress = scrollY - aboutSectionTop;
+    // Calculate scroll progress relative to our starting point
+    const scrollProgress = scrollY - servicesSectionTop;
     
-    // Process even before we reach the about section
-    if (scrollProgress < -aboutSectionHeight || scrollProgress > aboutSectionHeight * 1.5) return;
+    // Process even before we reach the services section
+    if (scrollProgress < -servicesSectionHeight || scrollProgress > servicesSectionHeight * 1.5) return;
     
     // Calculate progress (0 to 1)
-    // Start when scrolling down from hero and finish by Meet Our Team
-    const sectionProgress = Math.max(0, Math.min(1, scrollProgress / aboutSectionHeight));
+    const sectionProgress = Math.max(0, Math.min(1, scrollProgress / servicesSectionHeight));
     
     // Update each layer based on scroll progress
     stackLayers.forEach((layer, index) => {
       // Use index directly (0 to 5) so top layer comes in first
-      const layerThreshold = index * 0.04; // 0, 0.04, 0.08, 0.12, 0.16, 0.2 - reduced gaps
+      const layerThreshold = index * 0.015; // Further reduced gaps between layers for earlier start
       
       // Calculate progress for this specific layer - extremely fast transitions
-      const layerProgress = Math.max(0, Math.min(1, (sectionProgress - layerThreshold) / 0.03));
+      const layerProgress = Math.max(0, Math.min(1, (sectionProgress - layerThreshold) / 0.01));
       
       if (layerProgress > 0) {
         // Bring in the layer proportional to scroll - with faster animation

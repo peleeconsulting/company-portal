@@ -31,7 +31,7 @@
       </div>
     </section>
 
-    <!-- About Section with Stack -->
+    <!-- About Section -->
     <section class="about py-5">
       <div class="container">
         <!-- Text Section -->
@@ -42,47 +42,6 @@
           <p>Our name reflects our layered approach to technology - six integrated technology solutions working together to create a complete stack for your business success.</p>
           <a href="team.html" class="btn btn-outline-primary">Meet Our Team</a>
         </div>
-        
-        <!-- Stack Section - Absolutely Centered -->
-        <div class="stack-section" data-aos="fade-up" data-aos-delay="100">
-          <div class="six-stack-container">
-            <!-- Machine Learning Layer -->
-            <div class="stack-layer" data-piece="0">
-              <i class="fas fa-brain stack-layer-icon"></i>
-              <h3>Machine Learning</h3>
-            </div>
-            
-            <!-- Web & Mobile Applications Layer -->
-            <div class="stack-layer" data-piece="1">
-              <i class="fas fa-mobile-alt stack-layer-icon"></i>
-              <h3>Web & Mobile Applications</h3>
-            </div>
-            
-            <!-- Data Analytics Layer -->
-            <div class="stack-layer" data-piece="2">
-              <i class="fas fa-chart-line stack-layer-icon"></i>
-              <h3>Data Analytics</h3>
-            </div>
-            
-            <!-- Cloud Solutions Layer -->
-            <div class="stack-layer" data-piece="3">
-              <i class="fas fa-cloud stack-layer-icon"></i>
-              <h3>Cloud Solutions</h3>
-            </div>
-            
-            <!-- IT Strategy Layer -->
-            <div class="stack-layer" data-piece="4">
-              <i class="fas fa-lightbulb stack-layer-icon"></i>
-              <h3>IT Strategy</h3>
-            </div>
-            
-            <!-- Cybersecurity Layer -->
-            <div class="stack-layer" data-piece="5">
-              <i class="fas fa-shield-alt stack-layer-icon"></i>
-              <h3>Cybersecurity</h3>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -90,62 +49,48 @@
     <section class="services py-5 bg-light">
       <div class="container">
         <h2 class="section-title text-center mb-5" data-aos="fade-up">Our Services</h2>
-        <div class="row g-4">
-          <div class="col-md-4">
-            <div class="service-card fade-in-on-scroll" onclick="openServiceModal('custom-software')">
-              <div class="service-icon">
-                <i class="fas fa-code"></i>
-              </div>
-              <h3>Custom Software Development</h3>
-              <p>Tailored solutions designed specifically for your business needs and growth goals.</p>
+        
+        <!-- Stack Section -->
+        <div class="stack-section mb-5">
+          <div class="six-stack-container" data-aos="fade-up">
+            <!-- Machine Learning Layer -->
+            <div class="stack-layer" data-piece="0" onclick="openServiceModal('machine-learning')">
+              <i class="fas fa-brain stack-layer-icon"></i>
+              <h3>Machine Learning</h3>
             </div>
-          </div>
-          <div class="col-md-4">
-            <div class="service-card fade-in-on-scroll" onclick="openServiceModal('web-mobile')">
-              <div class="service-icon">
-                <i class="fas fa-mobile-alt"></i>
-              </div>
-              <h3>Mobile & Web Applications</h3>
-              <p>Cross-platform applications that provide seamless experiences across all devices.</p>
+            
+            <!-- Web & Mobile Applications Layer -->
+            <div class="stack-layer" data-piece="1" onclick="openServiceModal('web-mobile')">
+              <i class="fas fa-mobile-alt stack-layer-icon"></i>
+              <h3>Web & Mobile Applications</h3>
             </div>
-          </div>
-          <div class="col-md-4">
-            <div class="service-card fade-in-on-scroll" onclick="openServiceModal('data-analytics')">
-              <div class="service-icon">
-                <i class="fas fa-chart-line"></i>
-              </div>
+            
+            <!-- Data Analytics Layer -->
+            <div class="stack-layer" data-piece="2" onclick="openServiceModal('data-analytics')">
+              <i class="fas fa-chart-line stack-layer-icon"></i>
               <h3>Data Analytics</h3>
-              <p>Turn your data into actionable insights that drive business decisions and growth.</p>
             </div>
-          </div>
-          <div class="col-md-4">
-            <div class="service-card fade-in-on-scroll" onclick="openServiceModal('cloud')">
-              <div class="service-icon">
-                <i class="fas fa-cloud"></i>
-              </div>
+            
+            <!-- Cloud Solutions Layer -->
+            <div class="stack-layer" data-piece="3" onclick="openServiceModal('cloud')">
+              <i class="fas fa-cloud stack-layer-icon"></i>
               <h3>Cloud Solutions</h3>
-              <p>Scalable infrastructure and cloud migration strategies for greater efficiency.</p>
             </div>
-          </div>
-          <div class="col-md-4">
-            <div class="service-card fade-in-on-scroll" onclick="openServiceModal('cybersecurity')">
-              <div class="service-icon">
-                <i class="fas fa-lock"></i>
-              </div>
+            
+            <!-- IT Strategy Layer -->
+            <div class="stack-layer" data-piece="4" onclick="openServiceModal('it-strategy')">
+              <i class="fas fa-lightbulb stack-layer-icon"></i>
+              <h3>IT Strategy</h3>
+            </div>
+            
+            <!-- Cybersecurity Layer -->
+            <div class="stack-layer" data-piece="5" onclick="openServiceModal('cybersecurity')">
+              <i class="fas fa-shield-alt stack-layer-icon"></i>
               <h3>Cybersecurity</h3>
-              <p>Protect your business with robust security measures and compliance solutions.</p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="service-card fade-in-on-scroll" onclick="openServiceModal('it-strategy')">
-              <div class="service-icon">
-                <i class="fas fa-lightbulb"></i>
-              </div>
-              <h3>IT Strategy Consulting</h3>
-              <p>Strategic guidance to align your technology investments with business objectives.</p>
             </div>
           </div>
         </div>
+
         <div class="text-center mt-5" data-aos="fade-up">
           <a href="solutions.html" class="btn btn-primary btn-lg">Explore Our Solutions</a>
         </div>
@@ -231,39 +176,39 @@
   </main>
 
   <!-- Service Modals -->
-  <div id="custom-software-modal" class="modal">
+  <div id="machine-learning-modal" class="modal">
     <div class="modal-content">
-      <span class="close-modal" onclick="closeServiceModal('custom-software')">&times;</span>
+      <span class="close-modal" onclick="closeServiceModal('machine-learning')">&times;</span>
       <div class="modal-header">
         <div class="service-icon">
-          <i class="fas fa-code"></i>
+          <i class="fas fa-brain"></i>
         </div>
         <div class="modal-title">
-          <h2>Custom Software Development</h2>
+          <h2>Machine Learning</h2>
         </div>
       </div>
       <div class="modal-body">
-        <p class="lead">Tailored solutions designed specifically for your business needs and growth goals.</p>
+        <p class="lead">Leverage the power of artificial intelligence to automate processes and make data-driven decisions.</p>
         <div class="service-examples">
           <h3>Business Examples</h3>
           <div class="example-card">
-            <h4><i class="fas fa-store"></i> Retail Management System</h4>
-            <p>A custom solution for a local retail chain that integrates inventory management, POS systems, and customer loyalty programs.</p>
+            <h4><i class="fas fa-robot"></i> Predictive Analytics System</h4>
+            <p>Machine learning model for a retail business to predict customer behavior and optimize inventory management.</p>
             <ul>
-              <li>Real-time inventory tracking</li>
-              <li>Automated reordering system</li>
-              <li>Customer purchase history</li>
-              <li>Sales analytics dashboard</li>
+              <li>Customer behavior prediction</li>
+              <li>Inventory optimization</li>
+              <li>Sales forecasting</li>
+              <li>Personalized recommendations</li>
             </ul>
           </div>
           <div class="example-card">
-            <h4><i class="fas fa-hospital"></i> Healthcare Practice Management</h4>
-            <p>Specialized software for medical practices to manage appointments, patient records, and billing processes.</p>
+            <h4><i class="fas fa-cogs"></i> Process Automation</h4>
+            <p>AI-powered automation system for a manufacturing company to optimize production processes.</p>
             <ul>
-              <li>Patient scheduling system</li>
-              <li>Electronic health records</li>
-              <li>Insurance claim processing</li>
-              <li>Prescription management</li>
+              <li>Quality control automation</li>
+              <li>Production optimization</li>
+              <li>Predictive maintenance</li>
+              <li>Resource allocation</li>
             </ul>
           </div>
         </div>
@@ -279,7 +224,7 @@
           <i class="fas fa-mobile-alt"></i>
         </div>
         <div class="modal-title">
-          <h2>Mobile & Web Applications</h2>
+          <h2>Web & Mobile Applications</h2>
         </div>
       </div>
       <div class="modal-body">
@@ -396,7 +341,7 @@
       <span class="close-modal" onclick="closeServiceModal('cybersecurity')">&times;</span>
       <div class="modal-header">
         <div class="service-icon">
-          <i class="fas fa-lock"></i>
+          <i class="fas fa-shield-alt"></i>
         </div>
         <div class="modal-title">
           <h2>Cybersecurity</h2>
@@ -439,7 +384,7 @@
           <i class="fas fa-lightbulb"></i>
         </div>
         <div class="modal-title">
-          <h2>IT Strategy Consulting</h2>
+          <h2>IT Strategy</h2>
         </div>
       </div>
       <div class="modal-body">
