@@ -35,6 +35,9 @@ const initHeader = () => {
               <a class="nav-link" href="team.html">Our Team</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="faq.html">FAQ</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
           </ul>
@@ -88,6 +91,7 @@ const initFooter = () => {
             <li><a href="index.html">Home</a></li>
             <li><a href="solutions.html">Solutions</a></li>
             <li><a href="team.html">Our Team</a></li>
+            <li><a href="faq.html">FAQ</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>

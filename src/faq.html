@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - 6ixStack Solutions</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="description" content="Frequently Asked Questions about 6ixStack Solutions' services, pricing, and project timelines.">
+  <style>
+    /* Hero section styles */
+    .faq-hero {
+      background-color: var(--secondary-color);
+      color: var(--white);
+      padding: 8rem 0 5rem;
+      position: relative;
+    }
+
+    .faq-hero h1 {
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    /* FAQ-specific styles */
+    .faq-section {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .faq-item {
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .faq-item:hover {
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      padding: 1.5rem;
+      background: var(--white);
+      border: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--text-color);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+    
+    .faq-question:hover {
+      background-color: var(--gray-50);
+    }
+    
+    .faq-question:focus {
+      outline: 2px solid var(--primary-color);
+      outline-offset: -2px;
+    }
+    
+    .faq-question[aria-expanded="true"] {
+      background-color: var(--primary-color);
+      color: var(--white);
+    }
+    
+    .faq-question[aria-expanded="true"] .icon {
+      transform: rotate(180deg);
+    }
+    
+    .faq-answer {
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      background-color: var(--white);
+    }
+    
+    .faq-answer[aria-hidden="false"] {
+      padding: 1.5rem;
+      max-height: 500px;
+    }
+    
+    .icon {
+      transition: transform 0.3s ease;
+    }
+    
+    /* Category styles */
+    .faq-categories {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .category-btn {
+      padding: 0.5rem 1rem;
+      border: 2px solid var(--primary-color);
+      border-radius: 25px;
+      background: transparent;
+      color: var(--primary-color);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .category-btn:hover,
+    .category-btn.active {
+      background: var(--primary-color);
+      color: var(--white);
+    }
+    
+    .category-btn:focus {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
+    }
+    
+    /* Search styles */
+    .faq-search {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    
+    .search-input {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      padding-left: 3rem;
+      border: 2px solid var(--gray-200);
+      border-radius: 30px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(211, 54, 122, 0.1);
+    }
+    
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray-500);
+    }
+  </style>
+</head>
+<body>
+  <header id="header"></header>
+
+  <main>
+    <!-- FAQ Hero Section -->
+    <section class="faq-hero">
+      <div class="container text-center">
+        <h1 class="display-1" data-aos="fade-up">Frequently Asked Questions</h1>
+        <p class="lead" data-aos="fade-up" data-aos-delay="100">Find answers to common questions about our services and solutions</p>
+      </div>
+    </section>
+
+    <!-- FAQ Content Section -->
+    <section class="py-5">
+      <div class="container">
+        <div class="faq-section">
+          <!-- Search Bar -->
+          <div class="faq-search" data-aos="fade-up">
+            <i class="fas fa-search search-icon"></i>
+            <input 
+              type="search" 
+              class="search-input" 
+              placeholder="Search frequently asked questions..."
+              aria-label="Search frequently asked questions"
+            >
+          </div>
+
+          <!-- FAQ Categories -->
+          <div class="faq-categories" data-aos="fade-up">
+            <button class="category-btn active" data-category="all" aria-pressed="true">All Questions</button>
+            <button class="category-btn" data-category="services" aria-pressed="false">Services</button>
+            <button class="category-btn" data-category="pricing" aria-pressed="false">Pricing</button>
+            <button class="category-btn" data-category="timeline" aria-pressed="false">Timeline</button>
+            <button class="category-btn" data-category="support" aria-pressed="false">Support</button>
+          </div>
+
+          <!-- FAQ Items -->
+          <div class="faq-items" data-aos="fade-up">
+            <div class="faq-item" data-category="services">
+              <button 
+                class="faq-question" 
+                aria-expanded="false"
+                aria-controls="faq1"
+              >
+                <span>What types of businesses do you work with?</span>
+                <i class="fas fa-chevron-down icon"></i>
+              </button>
+              <div 
+                class="faq-answer" 
+                id="faq1" 
+                aria-hidden="true"
+              >
+                <p>We work with small and medium-sized businesses across various industries, including retail, healthcare, professional services, manufacturing, and more. Our solutions are tailored to address the specific challenges and goals of each business we work with.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-category="pricing">
+              <button 
+                class="faq-question" 
+                aria-expanded="false"
+                aria-controls="faq2"
+              >
+                <span>How much does a typical project cost?</span>
+                <i class="fas fa-chevron-down icon"></i>
+              </button>
+              <div 
+                class="faq-answer" 
+                id="faq2" 
+                aria-hidden="true"
+              >
+                <p>Project costs vary based on scope, complexity, and specific requirements. We provide transparent pricing and work with you to develop solutions that fit your budget. Our initial consultation is free, during which we'll discuss your needs and provide a detailed estimate for your project.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-category="timeline">
+              <button 
+                class="faq-question" 
+                aria-expanded="false"
+                aria-controls="faq3"
+              >
+                <span>How long does a typical project take to complete?</span>
+                <i class="fas fa-chevron-down icon"></i>
+              </button>
+              <div 
+                class="faq-answer" 
+                id="faq3" 
+                aria-hidden="true"
+              >
+                <p>Project timelines depend on scope and complexity. Small projects might take a few weeks, while comprehensive solutions can take several months. We use agile methodologies to deliver value incrementally, allowing you to see progress throughout the project lifecycle.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-category="support">
+              <button 
+                class="faq-question" 
+                aria-expanded="false"
+                aria-controls="faq4"
+              >
+                <span>Do you provide ongoing support after project completion?</span>
+                <i class="fas fa-chevron-down icon"></i>
+              </button>
+              <div 
+                class="faq-answer" 
+                id="faq4" 
+                aria-hidden="true"
+              >
+                <p>Yes, we offer various support and maintenance packages to ensure your solution continues to perform optimally. These can include regular updates, monitoring, troubleshooting, and enhancement requests. We'll work with you to determine the best support option for your needs.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-category="services">
+              <button 
+                class="faq-question" 
+                aria-expanded="false"
+                aria-controls="faq5"
+              >
+                <span>What technologies do you work with?</span>
+                <i class="fas fa-chevron-down icon"></i>
+              </button>
+              <div 
+                class="faq-answer" 
+                id="faq5" 
+                aria-hidden="true"
+              >
+                <p>We work with a wide range of modern technologies, including but not limited to JavaScript/TypeScript, React, Vue, Angular, Node.js, Python, .NET, AWS, Azure, Google Cloud, and various database technologies. We select the most appropriate technology stack based on your specific requirements rather than forcing a one-size-fits-all approach.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Still Have Questions Section -->
+        <div class="text-center mt-5 py-5" data-aos="fade-up">
+          <h2 class="section-title">Still Have Questions?</h2>
+          <p class="lead">Can't find what you're looking for? We're here to help.</p>
+          <a href="contact.html" class="btn btn-primary btn-lg mt-4">Contact Us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer"></footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // FAQ Functionality
+      const faqItems = document.querySelectorAll('.faq-item');
+      const categoryButtons = document.querySelectorAll('.category-btn');
+      const searchInput = document.querySelector('.search-input');
+
+      // Toggle FAQ answers
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+
+        question.addEventListener('click', () => {
+          const isExpanded = question.getAttribute('aria-expanded') === 'true';
+          
+          // Close all other items
+          faqItems.forEach(otherItem => {
+            if (otherItem !== item) {
+              const otherQuestion = otherItem.querySelector('.faq-question');
+              const otherAnswer = otherItem.querySelector('.faq-answer');
+              otherQuestion.setAttribute('aria-expanded', 'false');
+              otherAnswer.setAttribute('aria-hidden', 'true');
+            }
+          });
+
+          // Toggle current item
+          question.setAttribute('aria-expanded', !isExpanded);
+          answer.setAttribute('aria-hidden', isExpanded);
+        });
+      });
+
+      // Category filtering
+      categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const category = button.dataset.category;
+          
+          // Update button states
+          categoryButtons.forEach(btn => {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-pressed', 'false');
+          });
+          button.classList.add('active');
+          button.setAttribute('aria-pressed', 'true');
+
+          // Filter items
+          faqItems.forEach(item => {
+            if (category === 'all' || item.dataset.category === category) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Search functionality
+      searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        
+        faqItems.forEach(item => {
+          const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+          const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+          
+          if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          // Close all FAQ items when ESC is pressed
+          faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+            question.setAttribute('aria-expanded', 'false');
+            answer.setAttribute('aria-hidden', 'true');
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html> 
