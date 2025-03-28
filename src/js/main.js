@@ -80,8 +80,6 @@ const initFooter = () => {
           <p class="footer-text">Innovative software solutions tailored for small businesses. Expert tech consulting at affordable prices.</p>
           <div class="footer-social">
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
