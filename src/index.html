@@ -34,19 +34,13 @@
     <!-- About Section -->
     <section class="about py-5">
       <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6" data-aos="fade-right">
-            <h2 class="section-title">Who We Are</h2>
-            <p class="lead">6ixStack Solutions is a team of passionate tech enthusiasts dedicated to helping small businesses thrive in the digital world.</p>
-            <p>Founded by six friends with diverse tech backgrounds, we combine our expertise to deliver solutions that are innovative, efficient, and tailored to your specific needs.</p>
-            <p>Our name reflects our commitment - we're the team that's thinking about your tech challenges even at 4 AM!</p>
-            <a href="team.html" class="btn btn-outline-primary">Meet Our Team</a>
-          </div>
-          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
-            <div class="about-image">
-              <div class="animated-squares"></div>
-            </div>
-          </div>
+        <!-- Text Section -->
+        <div class="text-section" data-aos="fade-up">
+          <h2 class="section-title">Who We Are</h2>
+          <p class="lead">6ixStack Solutions is a team of passionate tech enthusiasts dedicated to helping small businesses thrive in the digital world.</p>
+          <p>Founded by six friends with diverse tech backgrounds, we combine our expertise to deliver solutions that are innovative, efficient, and tailored to your specific needs.</p>
+          <p>Our name reflects our layered approach to technology - six integrated technology solutions working together to create a complete stack for your business success.</p>
+          <a href="team.html" class="btn btn-outline-primary">Meet Our Team</a>
         </div>
       </div>
     </section>
@@ -55,62 +49,48 @@
     <section class="services py-5 bg-light">
       <div class="container">
         <h2 class="section-title text-center mb-5" data-aos="fade-up">Our Services</h2>
-        <div class="row g-4">
-          <div class="col-md-4" data-aos="fade-up">
-            <div class="service-card">
-              <div class="service-icon">
-                <i class="fas fa-code"></i>
-              </div>
-              <h3>Custom Software Development</h3>
-              <p>Tailored solutions designed specifically for your business needs and growth goals.</p>
+        
+        <!-- Stack Section -->
+        <div class="stack-section mb-5">
+          <div class="six-stack-container" data-aos="fade-up">
+            <!-- Machine Learning Layer -->
+            <div class="stack-layer" data-piece="0" onclick="openServiceModal('machine-learning')">
+              <i class="fas fa-brain stack-layer-icon"></i>
+              <h3>Machine Learning</h3>
             </div>
-          </div>
-          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-card">
-              <div class="service-icon">
-                <i class="fas fa-mobile-alt"></i>
-              </div>
-              <h3>Mobile & Web Applications</h3>
-              <p>Cross-platform applications that provide seamless experiences across all devices.</p>
+            
+            <!-- Web & Mobile Applications Layer -->
+            <div class="stack-layer" data-piece="1" onclick="openServiceModal('web-mobile')">
+              <i class="fas fa-mobile-alt stack-layer-icon"></i>
+              <h3>Web & Mobile Applications</h3>
             </div>
-          </div>
-          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-card">
-              <div class="service-icon">
-                <i class="fas fa-chart-line"></i>
-              </div>
+            
+            <!-- Data Analytics Layer -->
+            <div class="stack-layer" data-piece="2" onclick="openServiceModal('data-analytics')">
+              <i class="fas fa-chart-line stack-layer-icon"></i>
               <h3>Data Analytics</h3>
-              <p>Turn your data into actionable insights that drive business decisions and growth.</p>
             </div>
-          </div>
-          <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
-            <div class="service-card">
-              <div class="service-icon">
-                <i class="fas fa-cloud"></i>
-              </div>
+            
+            <!-- Cloud Solutions Layer -->
+            <div class="stack-layer" data-piece="3" onclick="openServiceModal('cloud')">
+              <i class="fas fa-cloud stack-layer-icon"></i>
               <h3>Cloud Solutions</h3>
-              <p>Scalable infrastructure and cloud migration strategies for greater efficiency.</p>
             </div>
-          </div>
-          <div class="col-md-4" data-aos="fade-up" data-aos-delay="250">
-            <div class="service-card">
-              <div class="service-icon">
-                <i class="fas fa-lock"></i>
-              </div>
+            
+            <!-- IT Strategy Layer -->
+            <div class="stack-layer" data-piece="4" onclick="openServiceModal('it-strategy')">
+              <i class="fas fa-lightbulb stack-layer-icon"></i>
+              <h3>IT Strategy</h3>
+            </div>
+            
+            <!-- Cybersecurity Layer -->
+            <div class="stack-layer" data-piece="5" onclick="openServiceModal('cybersecurity')">
+              <i class="fas fa-shield-alt stack-layer-icon"></i>
               <h3>Cybersecurity</h3>
-              <p>Protect your business with robust security measures and compliance solutions.</p>
-            </div>
-          </div>
-          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-card">
-              <div class="service-icon">
-                <i class="fas fa-lightbulb"></i>
-              </div>
-              <h3>IT Strategy Consulting</h3>
-              <p>Strategic guidance to align your technology investments with business objectives.</p>
             </div>
           </div>
         </div>
+
         <div class="text-center mt-5" data-aos="fade-up">
           <a href="solutions.html" class="btn btn-primary btn-lg">Explore Our Solutions</a>
         </div>
@@ -195,6 +175,269 @@
     </section>
   </main>
 
+  <!-- Service Modals -->
+  <div id="machine-learning-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeServiceModal('machine-learning')">&times;</span>
+      <div class="modal-header">
+        <div class="service-icon">
+          <i class="fas fa-brain"></i>
+        </div>
+        <div class="modal-title">
+          <h2>Machine Learning</h2>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p class="lead">Leverage the power of artificial intelligence to automate processes and make data-driven decisions.</p>
+        <div class="service-examples">
+          <h3>Business Examples</h3>
+          <div class="example-card">
+            <h4><i class="fas fa-robot"></i> Predictive Analytics System</h4>
+            <p>Machine learning model for a retail business to predict customer behavior and optimize inventory management.</p>
+            <ul>
+              <li>Customer behavior prediction</li>
+              <li>Inventory optimization</li>
+              <li>Sales forecasting</li>
+              <li>Personalized recommendations</li>
+            </ul>
+          </div>
+          <div class="example-card">
+            <h4><i class="fas fa-cogs"></i> Process Automation</h4>
+            <p>AI-powered automation system for a manufacturing company to optimize production processes.</p>
+            <ul>
+              <li>Quality control automation</li>
+              <li>Production optimization</li>
+              <li>Predictive maintenance</li>
+              <li>Resource allocation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="web-mobile-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeServiceModal('web-mobile')">&times;</span>
+      <div class="modal-header">
+        <div class="service-icon">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <div class="modal-title">
+          <h2>Web & Mobile Applications</h2>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p class="lead">Cross-platform applications that provide seamless experiences across all devices.</p>
+        <div class="service-examples">
+          <h3>Business Examples</h3>
+          <div class="example-card">
+            <h4><i class="fas fa-utensils"></i> Restaurant Ordering App</h4>
+            <p>A mobile app for a restaurant chain enabling customers to order, pay, and track their food delivery.</p>
+            <ul>
+              <li>Menu browsing and ordering</li>
+              <li>Real-time order tracking</li>
+              <li>Digital payment integration</li>
+              <li>Customer feedback system</li>
+            </ul>
+          </div>
+          <div class="example-card">
+            <h4><i class="fas fa-home"></i> Property Management Portal</h4>
+            <p>A web application for property managers to handle tenant communications, maintenance requests, and payments.</p>
+            <ul>
+              <li>Tenant portal access</li>
+              <li>Maintenance request system</li>
+              <li>Online rent payments</li>
+              <li>Document management</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="data-analytics-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeServiceModal('data-analytics')">&times;</span>
+      <div class="modal-header">
+        <div class="service-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <div class="modal-title">
+          <h2>Data Analytics</h2>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p class="lead">Turn your data into actionable insights that drive business decisions and growth.</p>
+        <div class="service-examples">
+          <h3>Business Examples</h3>
+          <div class="example-card">
+            <h4><i class="fas fa-shopping-cart"></i> E-commerce Analytics Dashboard</h4>
+            <p>Comprehensive analytics platform for an online retailer to track sales, customer behavior, and inventory performance.</p>
+            <ul>
+              <li>Sales trend analysis</li>
+              <li>Customer segmentation</li>
+              <li>Inventory optimization</li>
+              <li>Marketing campaign ROI</li>
+            </ul>
+          </div>
+          <div class="example-card">
+            <h4><i class="fas fa-industry"></i> Manufacturing Process Analytics</h4>
+            <p>Real-time analytics system for a manufacturing plant to monitor production efficiency and quality control.</p>
+            <ul>
+              <li>Production line monitoring</li>
+              <li>Quality control metrics</li>
+              <li>Predictive maintenance</li>
+              <li>Resource optimization</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="cloud-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeServiceModal('cloud')">&times;</span>
+      <div class="modal-header">
+        <div class="service-icon">
+          <i class="fas fa-cloud"></i>
+        </div>
+        <div class="modal-title">
+          <h2>Cloud Solutions</h2>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p class="lead">Scalable infrastructure and cloud migration strategies for greater efficiency.</p>
+        <div class="service-examples">
+          <h3>Business Examples</h3>
+          <div class="example-card">
+            <h4><i class="fas fa-building"></i> Enterprise Cloud Migration</h4>
+            <p>Complete cloud transformation for a mid-sized company, moving from legacy systems to cloud infrastructure.</p>
+            <ul>
+              <li>Infrastructure as a Service (IaaS)</li>
+              <li>Software as a Service (SaaS)</li>
+              <li>Disaster recovery</li>
+              <li>Cost optimization</li>
+            </ul>
+          </div>
+          <div class="example-card">
+            <h4><i class="fas fa-server"></i> Hybrid Cloud Solution</h4>
+            <p>Hybrid cloud setup for a financial services company requiring both public and private cloud capabilities.</p>
+            <ul>
+              <li>Secure data storage</li>
+              <li>Scalable computing</li>
+              <li>Compliance management</li>
+              <li>Performance optimization</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="cybersecurity-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeServiceModal('cybersecurity')">&times;</span>
+      <div class="modal-header">
+        <div class="service-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <div class="modal-title">
+          <h2>Cybersecurity</h2>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p class="lead">Protect your business with robust security measures and compliance solutions.</p>
+        <div class="service-examples">
+          <h3>Business Examples</h3>
+          <div class="example-card">
+            <h4><i class="fas fa-shield-alt"></i> Security Assessment & Implementation</h4>
+            <p>Comprehensive security audit and implementation for a healthcare provider handling sensitive patient data.</p>
+            <ul>
+              <li>Security risk assessment</li>
+              <li>Compliance monitoring</li>
+              <li>Employee training</li>
+              <li>Incident response plan</li>
+            </ul>
+          </div>
+          <div class="example-card">
+            <h4><i class="fas fa-user-shield"></i> Identity & Access Management</h4>
+            <p>Advanced access control system for a financial institution managing multiple user roles and permissions.</p>
+            <ul>
+              <li>Multi-factor authentication</li>
+              <li>Role-based access control</li>
+              <li>Audit logging</li>
+              <li>Security monitoring</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="it-strategy-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeServiceModal('it-strategy')">&times;</span>
+      <div class="modal-header">
+        <div class="service-icon">
+          <i class="fas fa-lightbulb"></i>
+        </div>
+        <div class="modal-title">
+          <h2>IT Strategy</h2>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p class="lead">Strategic guidance to align your technology investments with business objectives.</p>
+        <div class="service-examples">
+          <h3>Business Examples</h3>
+          <div class="example-card">
+            <h4><i class="fas fa-chart-bar"></i> Digital Transformation Roadmap</h4>
+            <p>Strategic planning for a traditional retail business transitioning to digital operations.</p>
+            <ul>
+              <li>Technology assessment</li>
+              <li>Digital roadmap creation</li>
+              <li>ROI analysis</li>
+              <li>Implementation planning</li>
+            </ul>
+          </div>
+          <div class="example-card">
+            <h4><i class="fas fa-sync"></i> IT Infrastructure Optimization</h4>
+            <p>Comprehensive IT strategy for a growing startup to scale their technology infrastructure.</p>
+            <ul>
+              <li>Infrastructure planning</li>
+              <li>Cost optimization</li>
+              <li>Scalability assessment</li>
+              <li>Technology roadmap</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer id="footer"></footer>
+
+  <script>
+    function openServiceModal(serviceId) {
+      const modal = document.getElementById(`${serviceId}-modal`);
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeServiceModal(serviceId) {
+      const modal = document.getElementById(`${serviceId}-modal`);
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    }
+  </script>
 </body>
 </html>

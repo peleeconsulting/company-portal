@@ -33,6 +33,30 @@ body {
   overflow-x: hidden;
   font-size: 1rem;
   font-weight: 400;
+  scroll-behavior: smooth;
+}
+
+/* Smooth scrolling effect */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Fade-in animation for scroll effects */
+.fade-in-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add 3D perspective to elements */
+.has-perspective {
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -169,17 +193,21 @@ header {
   width: 100%;
   z-index: 1000;
   transition: var(--transition);
-  padding: 1rem 0;
+  padding: 0;
+  margin: 0;
 }
+/* adding a test comment */
 
 header.scrolled {
   background-color: var(--white);
   box-shadow: var(--shadow);
-  padding: 0.5rem 0;
+  padding: 0;
 }
 
 .navbar {
-  padding: 0;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  width: 100%;
 }
 
 .navbar-brand {
@@ -189,10 +217,61 @@ header.scrolled {
   color: var(--white);
   transition: var(--transition);
   letter-spacing: -0.02em;
+  padding: 0;
+  margin: 0;
 }
 
-header.scrolled .navbar-brand {
+.navbar-brand a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.navbar-brand a:hover {
+  color: var(--white);
+}
+
+header.scrolled .navbar-brand a {
   color: var(--secondary-color);
+}
+
+/* Hamburger Menu Styles */
+.navbar-toggler {
+  padding: 0.5rem;
+  border: 2px solid var(--white);
+  background-color: transparent;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+}
+
+header.scrolled .navbar-toggler {
+  color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+  width: 24px;
+  height: 24px;
+}
+
+header.scrolled .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(251, 173, 24, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Ensure hamburger menu is visible on mobile */
+@media (max-width: 991.98px) {
+  .navbar-toggler {
+    display: flex !important;
+    margin-left: 1rem;
+  }
+
+  .navbar-toggler-icon {
+    display: block !important;
+  }
 }
 
 .nav-link {
@@ -238,6 +317,280 @@ header.scrolled .nav-link {
   color: var(--white);
 }
 
+/* 6ix Stack Interactive Section */
+.six-stack-section {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: var(--gray-100);
+  padding: 5rem 0;
+  margin-bottom: 3rem;
+}
+
+.stack-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 600px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.puzzle-pieces-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.six-stack-container {
+  position: relative;
+  width: 400px; /* Fixed width for better centering */
+  height: 500px;  /* Shortened height now that we're positioning relative to bottom */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end; /* Align to bottom to match with button */
+  perspective: 1000px; /* Add subtle 3D effect */
+  margin: 0 auto; /* Center horizontally */
+  left: 0; /* Reset any potential left offset */
+  right: 0; /* Ensure centering */
+  transform: none; /* Remove any transforms that might affect positioning */
+}
+
+.stack-layer {
+  position: absolute;
+  width: 90%;
+  max-width: 400px;
+  height: 70px; /* Taller layers */
+  background-color: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Stronger shadow for depth */
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1.5rem;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              opacity 0.6s ease,
+              top 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0;
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid var(--primary-color);
+  will-change: transform, opacity, top;
+  left: 0; /* Start centered */
+  right: 0; /* Start centered */
+  margin-left: auto; /* Center the layer */
+  margin-right: auto; /* Center the layer */
+  transform: translateY(350px); /* Only translate vertically */
+}
+
+/* Machine Learning Layer */
+.stack-layer[data-piece="0"] {
+  background-color: rgba(211, 54, 122, 0.15);
+  z-index: 15;
+}
+
+/* Web & Mobile Applications Layer */
+.stack-layer[data-piece="1"] {
+  background-color: rgba(251, 173, 24, 0.15);
+  z-index: 14;
+}
+
+/* Data Analytics Layer */
+.stack-layer[data-piece="2"] {
+  background-color: rgba(211, 54, 122, 0.2);
+  z-index: 13;
+}
+
+/* Cloud Solutions Layer */
+.stack-layer[data-piece="3"] {
+  background-color: rgba(251, 173, 24, 0.2);
+  z-index: 12;
+}
+
+/* IT Strategy Layer */
+.stack-layer[data-piece="4"] {
+  background-color: rgba(211, 54, 122, 0.25);
+  z-index: 11;
+}
+
+/* Cybersecurity Layer */
+.stack-layer[data-piece="5"] {
+  background-color: rgba(251, 173, 24, 0.25);
+  z-index: 10;
+}
+
+.stack-layer h3 {
+  font-size: 1.1rem;
+  margin: 0;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.stack-layer-icon {
+  font-size: 1.6rem;
+  color: var(--primary-color);
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+}
+
+.stack-layer:hover .stack-layer-icon {
+  transform: scale(1.2);
+}
+
+/* Stacked layout with each layer at its final position */
+.stack-layer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Final stacked positions - adjusted a tiny bit higher */
+.stack-layer[data-piece="5"] {
+  top: calc(100% - 120px); /* Bottom layer, moved higher */
+  z-index: 1;
+}
+
+.stack-layer[data-piece="4"] {
+  top: calc(100% - 180px); /* 60px above the bottom layer */
+  z-index: 2;
+}
+
+.stack-layer[data-piece="3"] {
+  top: calc(100% - 240px); /* 60px above the previous layer */
+  z-index: 3;
+}
+
+.stack-layer[data-piece="2"] {
+  top: calc(100% - 300px); /* 60px above the previous layer */
+  z-index: 4;
+}
+
+.stack-layer[data-piece="1"] {
+  top: calc(100% - 360px); /* 60px above the previous layer */
+  z-index: 5;
+}
+
+.stack-layer[data-piece="0"] {
+  top: calc(100% - 420px); /* 60px above the previous layer */
+  z-index: 6;
+}
+
+/* Visible layers with stacked appearance */
+.stack-layer.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.puzzle-piece-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.puzzle-piece:hover .puzzle-piece-icon {
+  transform: scale(1.2);
+}
+
+.puzzle-piece h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.puzzle-piece p {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  line-height: 1.4;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease, max-height 0.4s ease;
+}
+
+.puzzle-piece.expanded p {
+  opacity: 1;
+  max-height: 150px;
+  margin-top: 1rem;
+}
+
+.stack-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--primary-color);
+}
+
+.puzzle-complete {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 30;
+}
+
+.puzzle-complete.active {
+  opacity: 1;
+}
+
+.puzzle-complete h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+}
+
+.puzzle-complete p {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  max-width: 90%;
+}
+
+/* Animation states for scroll-driven assembly - from sides and corners */
+.six-stack-section.unassembled .puzzle-piece[data-piece="0"] {
+  transform: translate(-300%, 0) rotate(-90deg);
+  opacity: 0;
+}
+
+.six-stack-section.unassembled .puzzle-piece[data-piece="1"] {
+  transform: translate(0, -300%) rotate(90deg);
+  opacity: 0;
+}
+
+.six-stack-section.unassembled .puzzle-piece[data-piece="2"] {
+  transform: translate(300%, 0) rotate(90deg); 
+  opacity: 0;
+}
+
+.six-stack-section.unassembled .puzzle-piece[data-piece="3"] {
+  transform: translate(-300%, 150%) rotate(-90deg);
+  opacity: 0;
+}
+
+.six-stack-section.unassembled .puzzle-piece[data-piece="4"] {
+  transform: translate(0, 300%) rotate(-90deg);
+  opacity: 0;
+}
+
+.six-stack-section.unassembled .puzzle-piece[data-piece="5"] {
+  transform: translate(300%, 150%) rotate(90deg);
+  opacity: 0;
+}
+
 .canvas-container {
   position: absolute;
   top: 0;
@@ -281,6 +634,25 @@ header.scrolled .nav-link {
   overflow: hidden;
 }
 
+.about .container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.text-section {
+  flex: 1 1 600px;
+  padding-right: 2rem;
+}
+
+.stack-section {
+  flex: 1 1 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0; /* Remove any potential left padding */
+  margin-left: 0; /* Remove any potential left margin */
+}
+
 .about-image {
   position: relative;
   height: 500px;
@@ -304,33 +676,75 @@ header.scrolled .nav-link {
   background-color: var(--white);
   border-radius: 15px;
   padding: 2.5rem;
-  transition: var(--transition);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   height: 100%;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
   border: 1px solid var(--gray-200);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer; /* Add pointer cursor */
 }
 
 .service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow);
+  transform: translateY(-10px) rotateX(3deg) rotateY(3deg);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-color: rgba(211, 54, 122, 0.2);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: all 0.3s ease;
 }
 
 .service-icon {
-  background-color: rgba(75, 108, 193, 0.1);
+  background-color: rgba(211, 54, 122, 0.1);
   color: var(--primary-color);
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  z-index: 2;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.15) translateZ(20px);
+  box-shadow: 0 10px 20px rgba(211, 54, 122, 0.2);
+  background-color: var(--primary-color);
+  color: var(--white);
 }
 
 .service-card h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  transition: transform 0.5s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.service-card:hover h3 {
+  transform: translateZ(15px);
+  color: var(--primary-color);
 }
 
 /* Why Choose Us Section */
@@ -558,6 +972,7 @@ header.scrolled .nav-link {
 
 .solution-section {
   position: relative;
+  overflow: hidden;
 }
 
 .solution-image {
@@ -565,6 +980,7 @@ header.scrolled .nav-link {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .code-animation, .device-mockups, .analytics-animation, .cloud-animation, .security-animation, .strategy-animation {
@@ -578,6 +994,41 @@ header.scrolled .nav-link {
   justify-content: center;
   color: var(--gray-600);
   font-size: 1.5rem;
+  overflow: hidden;
+}
+
+.solution-icon-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.icon-particle {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.solution-section.in-view .icon-particle {
+  opacity: 0.7;
+  transform: scale(1);
+}
+
+.solution-section.in-view .solution-icon {
+  transform: scale(1.2);
+  color: var(--primary-color);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .solution-subtitle {
@@ -917,10 +1368,77 @@ footer {
     padding: 1rem;
     border-radius: 10px;
     box-shadow: var(--shadow);
+    margin-top: 1rem;
+    width: 100%;
   }
   
   .nav-link {
     color: var(--secondary-color) !important;
+  }
+
+  /* Force navbar items to wrap on very small screens */
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  .navbar-brand {
+    flex: 1;
+    font-size: 1.5rem; /* Slightly smaller font on mobile */
+  }
+
+  .navbar-toggler {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .navbar-collapse {
+    order: 3;
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 1550px) {
+  /* Override Bootstrap container padding */
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Make flex items stack vertically on smaller screens */
+  .about .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Center text on small screens */
+  .text-section {
+    text-align: center;
+    padding-right: 0;
+    padding-left: 0;
+    margin-bottom: 2rem;
+    max-width: 800px;
+  }
+  
+  /* Make stack section full width but centered */
+  .stack-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0; /* Remove all padding */
+    margin: 0 auto; /* Center with auto margins */
+    max-width: 400px; /* Match the stack container width */
+  }
+  
+  .six-stack-container {
+    height: 420px;
+    margin: 2rem auto;
+    position: static; /* Reset positioning */
+  }
+  
+  /* Center section title underline */
+  .section-title:after {
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
@@ -940,6 +1458,16 @@ footer {
   
   .footer-widget {
     margin-bottom: 2rem;
+  }
+  
+  /* Adjust stack size for medium screens */
+  .six-stack-container {
+    height: 400px;
+  }
+  
+  /* Adjust layer height for better fit */
+  .stack-layer {
+    height: 60px;
   }
 }
 
@@ -967,5 +1495,214 @@ footer {
   .contact-icon {
     margin-bottom: 1rem;
     margin-right: 0;
+  }
+  
+  /* Further adjust stack for small screens */
+  .six-stack-container {
+    height: 350px;
+  }
+  
+  /* Make stack layers smaller on mobile */
+  .stack-layer {
+    height: 50px;
+    max-width: 280px;
+  }
+  
+  .stack-layer h3 {
+    font-size: 0.85rem;
+  }
+  
+  .stack-layer-icon {
+    font-size: 1.1rem;
+    margin-right: 0.5rem;
+  }
+  
+  /* Adjust spacing between layers for smaller screens */
+  .stack-layer[data-piece="5"] { top: calc(100% - 100px); }
+  .stack-layer[data-piece="4"] { top: calc(100% - 155px); }
+  .stack-layer[data-piece="3"] { top: calc(100% - 210px); }
+  .stack-layer[data-piece="2"] { top: calc(100% - 265px); }
+  .stack-layer[data-piece="1"] { top: calc(100% - 320px); }
+  .stack-layer[data-piece="0"] { top: calc(100% - 375px); }
+
+  .navbar {
+    padding: 0.5rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.3rem; /* Even smaller font on very small screens */
+  }
+
+  .navbar-toggler {
+    padding: 0.4rem;
+  }
+}
+
+/* Service Modals */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.modal-content {
+  background-color: var(--white);
+  border-radius: 15px;
+  padding: 2rem;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--gray-600);
+  transition: color 0.3s ease;
+  z-index: 1;
+}
+
+.close-modal:hover {
+  color: var(--primary-color);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--gray-200);
+}
+
+.modal-header .service-icon {
+  margin-right: 1.5rem;
+}
+
+.modal-title h2 {
+  margin: 0;
+  color: var(--primary-color);
+  font-size: 2rem;
+}
+
+.modal-body {
+  line-height: 1.6;
+}
+
+.modal-body .lead {
+  font-size: 1.2rem;
+  color: var(--gray-700);
+  margin-bottom: 2rem;
+}
+
+.service-examples {
+  margin-top: 2rem;
+}
+
+.service-examples h3 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.example-card {
+  background-color: var(--gray-50);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--gray-200);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.example-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.example-card h4 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.example-card h4 i {
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.example-card p {
+  color: var(--gray-700);
+  margin-bottom: 1rem;
+}
+
+.example-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.example-card ul li {
+  padding-left: 1.5rem;
+  position: relative;
+  color: var(--gray-600);
+}
+
+.example-card ul li:before {
+  content: "•";
+  color: var(--primary-color);
+  position: absolute;
+  left: 0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .modal-header {
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-header .service-icon {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .modal-title h2 {
+    font-size: 1.5rem;
+  }
+
+  .modal-body .lead {
+    font-size: 1.1rem;
+  }
+
+  .example-card {
+    padding: 1rem;
+  }
+
+  .example-card ul {
+    grid-template-columns: 1fr;
   }
 }
