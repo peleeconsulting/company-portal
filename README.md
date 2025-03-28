@@ -2,9 +2,17 @@
 
 A modern, responsive website for 6ixStack Solutions, a software solutions company specializing in small business technology consulting.
 
-The website will be available: 
-🔗 [6ixStack Website](https://www.6ixstack.com)
-🔗 [GitHub Pages](https://6ixstack.github.io/company-portal)
+## Site Status
+#### Prod Status
+[![Deploy to GitHub Pages](https://github.com/6ixstack/company-portal/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/6ixstack/company-portal/actions/workflows/deploy.yml)
+
+#### PreProd Status
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5c662023-22f7-47e7-b402-5856a2dc5adb/deploy-status)](https://app.netlify.com/sites/effervescent-licorice-a3c4ff/deploys)
+
+## Web URLs:
+The website will be available: <br/>
+🔗 [6ixStack Website](https://www.6ixstack.com) <br/>
+🔗 [GitHub Pages](https://6ixstack.github.io/company-portal) <br/>
 🔗 [Pre-Production Site](https://effervescent-licorice-a3c4ff.netlify.app)
 
 ## Features
