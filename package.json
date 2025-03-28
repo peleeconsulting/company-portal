@@ -19,6 +19,7 @@
   "author": "6ixStack Solutions Team",
   "license": "MIT",
   "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^7.1.2",
     "gh-pages": "^6.3.0",
     "html-webpack-plugin": "^5.6.3",
