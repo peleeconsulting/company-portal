@@ -32,52 +32,61 @@
             <h2 class="section-title">Get In Touch</h2>
             <p class="lead">We're eager to hear about your business challenges and how we can help.</p>
             <p>Fill out the form below, and one of our consultants will reach out to schedule a free initial consultation.</p>
-            
-            <form id="contact-form" class="contact-form text-start" action="https://formsubmit.co/admin@6ixstack.com" method="POST">
-              <input type="hidden" name="_subject" value="NEW CLIENT CONTACT FORM SUBMISSION">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="_next" value="https://6ixstack.com/thank-you.html">
-              <input type="hidden" name="_autoresponse" value="Thank you for contacting 6ixStack Solutions. We have received your message and will get back to you within 24 hours.">
-              <div class="mb-3">
-                <label for="name" class="form-label">Full Name*</label>
-                <input type="text" class="form-control" id="name" required>
-              </div>
-              <div class="mb-3">
-                <label for="company" class="form-label">Company Name*</label>
-                <input type="text" class="form-control" id="company" required>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">Email Address*</label>
-                <input type="email" class="form-control" id="email" required>
-              </div>
-              <div class="mb-3">
-                <label for="phone" class="form-label">Phone Number</label>
-                <input type="tel" class="form-control" id="phone">
-              </div>
-              <div class="mb-3">
-                <label for="service" class="form-label">Service of Interest*</label>
-                <select class="form-select" id="service" required>
-                  <option value="" selected disabled>Select a service</option>
-                  <option value="custom-software">Custom Software Development</option>
-                  <option value="web-mobile">Mobile & Web Applications</option>
-                  <option value="data-analytics">Data Analytics</option>
-                  <option value="cloud">Cloud Solutions</option>
-                  <option value="strategy">IT Strategy Consulting</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              <div class="mb-3">
-                <label for="message" class="form-label">Tell us about your project/needs*</label>
-                <textarea class="form-control" id="message" rows="5" required></textarea>
-              </div>
-              <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="privacy" required>
-                <label class="form-check-label" for="privacy">I agree to the privacy policy and consent to being contacted about my inquiry.*</label>
-              </div>
-              <div class="text-center">
-                <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
-              </div>
-            </form>
+              <form action="https://formsubmit.co/admin@6ixstack.com" method="POST">
+                <input type="hidden" name="_subject" value="New 6ixStack Client Contact Submission">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="https://www.6ixstack.com/thank-you.html">
+                <input type="hidden" name="_autoresponse" value="Thank you for contacting 6ixStack Solutions. We have received your message and will get back to you within 24 hours.">
+                <input type="hidden" name="_cc" value="mohaimenhasan@gmail.com">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Full Name*</label>
+                  <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+              
+                <div class="mb-3">
+                  <label for="company" class="form-label">Company Name*</label>
+                  <input type="text" class="form-control" id="company" name="company" required>
+                </div>
+              
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email Address*</label>
+                  <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+              
+                <div class="mb-3">
+                  <label for="phone" class="form-label">Phone Number</label>
+                  <input type="tel" class="form-control" id="phone" name="phone">
+                </div>
+              
+                <div class="mb-3">
+                  <label for="service" class="form-label">Service of Interest*</label>
+                  <select class="form-select" id="service" name="service" required>
+                    <option value="" selected disabled>Select a service</option>
+                    <option value="custom-software">Custom Software Development</option>
+                    <option value="web-mobile">Mobile & Web Applications</option>
+                    <option value="data-analytics">Data Analytics</option>
+                    <option value="cloud">Cloud Solutions</option>
+                    <option value="strategy">IT Strategy Consulting</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              
+                <div class="mb-3">
+                  <label for="message" class="form-label">Tell us about your project/needs*</label>
+                  <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                </div>
+              
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="privacy" name="privacy" required>
+                  <label class="form-check-label" for="privacy">
+                    I agree to the privacy policy and consent to being contacted about my inquiry.*
+                  </label>
+                </div>
+              
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                </div>
+              </form>
           </div>
         </div>
 

@@ -1106,6 +1106,13 @@ header.scrolled .nav-link {
   border: 1px solid var(--gray-300);
 }
 
+.form-label {
+  text-align: left;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
 .form-control:focus, .form-select:focus {
   box-shadow: none;
   border-color: var(--primary-color);
