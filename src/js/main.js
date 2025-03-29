@@ -537,7 +537,7 @@ const initAnimations = () => {
 
 // Initialize contact form submission
 const initContactForm = () => {
-  const contactForm = document.getElementById('contact-form');
+  const contactForm = document.querySelector('#contact-form form');
   if (!contactForm) return;
   
   contactForm.addEventListener('submit', (e) => {

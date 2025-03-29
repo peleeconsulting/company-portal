@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You - 6ixStack Solutions</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Thank you for contacting 6ixStack Solutions. We'll get back to you soon.">
+  
+  <!-- Logo for Google Search -->
+  <meta property="og:image" content="<%= require('./assets/images/logo.png') %>">
+  <style>
+    /* Hero section styles */
+    .thank-you-hero {
+      background-color: var(--secondary-color);
+      color: var(--white);
+      padding: 8rem 0 5rem;
+      position: relative;
+    }
+
+    .thank-you-hero h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header id="header"></header>
+
+  <main>
+    <!-- Thank You Hero Section -->
+    <section class="thank-you-hero">
+      <div class="container text-center">
+        <h1 class="display-1" data-aos="fade-up">Thank You!</h1>
+        <p class="lead" data-aos="fade-up" data-aos-delay="100">We've received your message and will get back to you shortly.</p>
+      </div>
+    </section>
+
+    <!-- Thank You Content Section -->
+    <section class="thank-you-content py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center" data-aos="fade-up">
+            <div class="thank-you-message mb-5">
+              <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+              <h2 class="section-title mt-4">Message Received</h2>
+              <p class="lead">Thank you for reaching out to 6ixStack Solutions. We have received your inquiry and will respond within 24 hours.</p>
+              <p>In the meantime, feel free to explore our services or contact us directly if you have any urgent questions.</p>
+            </div>
+
+            <div class="action-buttons">
+              <a href="/" class="btn btn-primary btn-lg me-3">Return to Home</a>
+              <a href="/contact.html" class="btn btn-outline-primary btn-lg">Contact Us Again</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer"></footer>
+</body>
+</html> 
